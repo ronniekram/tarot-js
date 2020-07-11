@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_11_061224) do
+ActiveRecord::Schema.define(version: 2020_07_11_064431) do
 
   create_table "card_draws", force: :cascade do |t|
     t.integer "card_id"
@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 2020_07_11_061224) do
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "reversed"
   end
 
   create_table "draws", force: :cascade do |t|
