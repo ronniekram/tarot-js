@@ -7,4 +7,6 @@ class Card {
     this.upright = cardDetails.upright
     this.reversed = cardDetails.reversed
   }
+
+  // add get cards
 }
