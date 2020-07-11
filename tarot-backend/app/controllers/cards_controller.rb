@@ -6,6 +6,8 @@ class CardsController < ApplicationController
   end 
 
   def show 
+    card = Card.find_by(id: params[:id])
+    render json: card
   end 
   
 end
