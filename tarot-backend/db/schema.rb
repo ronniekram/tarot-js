@@ -12,15 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2020_07_11_064431) do
 
-  create_table "card_draws", force: :cascade do |t|
-    t.integer "card_id"
-    t.integer "draw_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["card_id"], name: "index_card_draws_on_card_id"
-    t.index ["draw_id"], name: "index_card_draws_on_draw_id"
-  end
-
   create_table "cards", force: :cascade do |t|
     t.string "name"
     t.text "description"

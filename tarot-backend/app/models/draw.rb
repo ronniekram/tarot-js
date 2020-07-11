@@ -1,4 +1,3 @@
 class Draw < ApplicationRecord
-  has_many :card_draws
-  has_many :cards, through: :card_draws
+  has_and_belongs_to_many :cards
 end
