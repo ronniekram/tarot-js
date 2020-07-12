@@ -2,13 +2,20 @@ const BASE_URL = "http://localhost:3000"
 const navBar = document.querySelector("nav")
 const rowDiv = document.querySelector(".row")
 
+const oneButton = document.querySelector("#draw-one")
+const threeButton = document.querySelector("#draw-three")
+const fiveButton = document.querySelector("#draw-five")
+
+const about = document.querySelector("#about-link")
+const allCards = document.querySelector("#cards-link")
+
 document.addEventListener("DOMContentLoaded", () => {
+  about.addEventListener("click", renderAbout);
+  allCards = document.addEventListener("click", fetchCards);
   // fetchCards();
-  renderAbout();
+  // renderAbout();
   // event listener for nav bar
-  // event listener for one card draw
-  // event listener for three card draw
-  // event listener for five card draw
+  // event listener for card draws
 })
 
 function navigateTarot() {
@@ -120,4 +127,24 @@ function threeCards(cards) {
 function fiveCards(cards) {
   let amount = cards.sample(5);
   renderCards(amount)
+}
+
+function createDraw() {
+
+}
+
+function getAllDraws() {
+
+}
+
+function getDraw() {
+
+}
+
+function deleteAllDraws() {
+
+}
+
+function deleteDraw() {
+
 }

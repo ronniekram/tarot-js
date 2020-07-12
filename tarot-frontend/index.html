@@ -59,7 +59,7 @@
       <!-- /.col-lg-8 -->
       <div class="col-lg-5">
         <h1 class="font-weight-light">Seeking Guidance:</h1>
-        <p>When you find yourself without a tarot deck or the time to draw a spread-- We'll do the work for you. Cards in the draw come with a description, but feel free to interperet them how you wish! Choose a one, three or five card draw below.</p>
+        <p>When you find yourself without a tarot deck or the time to draw a spread-- We'll do the work for you. Cards in the draw come with a description, but feel free to interperet them how you wish! Ask your question and choose a one, three or five card draw below.</p>
       </div>
       <!-- /.col-md-4 -->
     </div>
@@ -68,9 +68,12 @@
     <!-- Call to Action Well -->
     <div class="card text-white bg-secondary my-5 py-4 text-center">
       <div class="card-body">
-        <a class="btn btn-primary" href="#" id="draw-one">Draw One Card</a>
-        <a class="btn btn-primary" href="#" id="draw-three">Draw Three Cards</a>
-        <a class="btn btn-primary" href="#" id="draw-five">Draw Five Cards</a>
+        <form class="draw_cards"> 
+          <input type="text" id="draw-question" value="What is your question?"> <br> 
+          <button type="submit" class="btn btn-primary" id="draw-one">Draw One Card</button>
+          <button type="submit" class="btn btn-primary" id="draw-three">Draw Three Cards</button>
+          <button type="submit" class="btn btn-primary" id="draw-five">Draw Five Cards</button>
+        </form>
       </div>
     </div>
 

@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_07_11_053516) do
   end
 
   create_table "draws", force: :cascade do |t|
-    t.integer "num_of_cards"
+    t.string "question"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
