@@ -1,3 +1,3 @@
 class Card < ApplicationRecord
-  belongs_to :draw
+  has_and_belongs_to_many :draws
 end

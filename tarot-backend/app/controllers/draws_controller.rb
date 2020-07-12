@@ -3,7 +3,8 @@ class DrawsController < ApplicationController
 
   def index 
     draws = Draw.all 
-    render json: draws
+    render json: draws,
+      include: [:cards]
   end 
 
   def create 
@@ -12,7 +13,8 @@ class DrawsController < ApplicationController
   end 
 
   def show
-    render json: draw
+    render json: draw, 
+    include: [:cards]
   end 
 
   def destroy
@@ -22,7 +24,7 @@ class DrawsController < ApplicationController
   private 
 
   def draw_params 
-    params.require(:draw).permit(:created_at, :card_ids)
+    params.require(:draw).permit(:num_of_cards)
   end 
 
   def set_draw 

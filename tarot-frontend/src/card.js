@@ -8,5 +8,5 @@ class Card {
     this.reversed = cardDetails.reversed
   }
 
-  // add get cards
+//  add get cards
 }
