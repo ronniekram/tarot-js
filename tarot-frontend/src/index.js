@@ -1,35 +1,38 @@
 const BASE_URL = "http://localhost:3000"
-const navBar = document.querySelector("nav")
-const rowDiv = document.querySelector(".row")
-
-const oneButton = document.querySelector("#draw-one")
-const threeButton = document.querySelector("#draw-three")
-const fiveButton = document.querySelector("#draw-five")
-
-const about = document.querySelector("#about-link")
-const allCards = document.querySelector("#cards-link")
+const rowDiv = document.querySelector(".row");
+const oneButton = document.querySelector("#draw-one");
+const threeButton = document.querySelector("#draw-three");
+const fiveButton = document.querySelector("#draw-five");
 
 document.addEventListener("DOMContentLoaded", () => {
-  about.addEventListener("click", renderAbout);
-  allCards = document.addEventListener("click", fetchCards);
-  // fetchCards();
-  // renderAbout();
-  // event listener for nav bar
-  // event listener for card draws
-})
+  navigateTarot();
+});
 
 function navigateTarot() {
-  // use event target for button ids
-  // use event targets for nav links
+  let navLinks = document.querySelectorAll(".nav-link");
+  navLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      if (link.id === "index") {
+        rowDiv.innerHTML += "";
+      } else if (link.id === "about") {
+        renderAbout();
+      } else if (link.id === "cards") {
+        fetchCards();
+      }
+    })
+  })
 }
 
 function fetchCards() {
+  console.log("cards index button clicks");
   fetch(`${BASE_URL}/cards`)
   .then(resp => resp.json())
   .then(cards => renderCards(cards))
+  console.log("cards fetched");
 }
 
 function renderAbout() {
+  console.log("about button clicked");
   rowDiv.innerHTML += `
   <br> <br>
   <h3>What is Tarot?</h3>
