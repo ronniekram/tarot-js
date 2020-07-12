@@ -50,3 +50,12 @@ function renderCards(cards) {
     rowDiv.appendChild(columnDiv)
   })
 }
+
+function titleCaseName(name) {
+  let words = name.split("-");
+  for (let i = 0; i < words.length; i++) {
+    words[i] = words[i][0].toUppercase() + words[i].slice(1)
+  }
+    return words.join(" ");
+  
+}
