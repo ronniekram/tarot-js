@@ -1,12 +1,46 @@
-class Card {
-  constructor(cardDetails) {
-    this.name = cardDetails.name
-    this.summary = cardDetails.summary
-    this.full_meaning = cardDetails.full_meaning
-    this.image = cardDetails.image
-    this.upright = cardDetails.upright
-    this.reversed = cardDetails.reversed
+class Card{
+  constructor(name, summary, full_meaning, image, upright, reversed) {
+    this.name = name
+    this.summary = summary
+    this.full_meaning = full_meaning
+    this.image = image
+    this.upright = upright
+    this.reversed = reversed
   }
 
-//  add get cards
+  static fetchCards() {
+    fetch(`${BASE_URL}/cards`)
+    .then(resp => resp.json())
+    .then(cards => this.renderCards(cards))
+  }
+
+  static renderCards(cards) {
+    cards.forEach(card => {
+      let id = card.id
+      let columnDiv = document.createElement('div');
+      columnDiv.className = "col-md-4 mb-5"
+      columnDiv.id = id
+
+      columnDiv.innerHTML += `
+        <div class="card h-100">
+        <div class="card-body" id="${id}">
+          <h2 class="card-title" id="${id}"> ${card.name}</h2>
+          <div class="card-img" id="${id}">
+            <img src="${card.image}">
+          </div>
+          <p class="card-text" id="${id}">${card.full_meaning}</p>
+        </div>
+        <div class="card-footer" id="${id}">
+          <p>
+            <strong>Upright:</strong> ${card.upright} 
+          </p>
+          <p>
+            <strong>Reversed:</strong> ${card.reversed}
+          </p>
+        </div>
+      </div>
+      `
+      rowDiv.appendChild(card)
+    })
+  }
 }
