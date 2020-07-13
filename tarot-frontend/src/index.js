@@ -1,26 +1,23 @@
 const BASE_URL = "http://localhost:3000"
-const rowDiv = document.querySelector(".row");
-const oneButton = document.querySelector("#draw-one");
-const threeButton = document.querySelector("#draw-three");
-const fiveButton = document.querySelector("#draw-five");
+const rowDiv = document.getElementById("main-box");
+const navLinks = document.querySelector(".navbar-collapse")
+const form = document.querySelector(".draw_cards")
 
 document.addEventListener("DOMContentLoaded", () => {
-  navigateTarot();
+  navLinks.addEventListener("click", navigateTarot);
 });
 
 function navigateTarot() {
-  let navLinks = document.querySelectorAll(".nav-link");
-  navLinks.forEach(link => {
-    link.addEventListener("click", () => {
-      if (link.id === "index") {
-        rowDiv.innerHTML += "";
-      } else if (link.id === "about") {
-        renderAbout();
-      } else if (link.id === "cards") {
-        fetchCards();
-      }
-    })
-  })
+  if (event.target.id === "index") {
+    console.log("home link clicked")
+    rowDiv.innerHTML = ""
+  } else if (event.target.id === "about") {
+    renderAbout();
+  } else if (event.target.id === "cards") {
+    fetchCards();
+  } else if (event.target.id === "draws-link") {
+    console.log("Previous Draw Link  clicked");
+  }
 }
 
 function fetchCards() {
@@ -33,7 +30,7 @@ function fetchCards() {
 
 function renderAbout() {
   console.log("about button clicked");
-  rowDiv.innerHTML += `
+  rowDiv.innerHTML = `
   <br> <br>
   <h3>What is Tarot?</h3>
     <p> The origins of Tarot is unknown, but there are documented references to use of cards back to fourteenth century Europe. Tarot, in the form we know today, has been used as an oracle since the beginning of the 17th century. <br>
@@ -79,6 +76,7 @@ function renderAbout() {
 }
 
 function renderCards(cards) {
+  rowDiv.innerHTML = "";
   cards.forEach(card => {
     let id = card.id
     let name = titleCaseName(card.name);
@@ -115,21 +113,6 @@ function titleCaseName(name) {
     nameArray[i] = nameArray[i].charAt(0).toUpperCase() + nameArray[i].slice(1).toLowerCase();
   }
   return nameArray.join(" ");
-}
-
-function oneCard(cards) {
-  let amount = cards.sample(1);
-  renderCards(amount)
-}
-
-function threeCards(cards) {
-  let amount = cards.sample(3);
-  renderCards(amount)
-}
-
-function fiveCards(cards) {
-  let amount = cards.sample(5);
-  renderCards(amount)
 }
 
 function createDraw() {
