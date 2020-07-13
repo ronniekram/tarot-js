@@ -3,7 +3,7 @@ class DrawsController < ApplicationController
   # before_action :set_cards, only: [:one_card, :three_card, :five_card]
 
   def index 
-    draws = Draw.all 
+    draws = Draw.all.order(created_at: :asc) 
     render json: draws,
       include: [:cards]
   end 
@@ -30,7 +30,7 @@ class DrawsController < ApplicationController
   private 
 
   def draw_params 
-    params.require(:draw).permit(:question)
+    params.require(:draw).permit(:question, :draw_cards)
   end 
 
   def set_draw 

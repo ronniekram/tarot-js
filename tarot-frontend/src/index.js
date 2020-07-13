@@ -117,23 +117,6 @@ function titleCaseName(name) {
   return nameArray.join(" ");
 }
 
-function oneCard() {
-  fetch(`${BASE_URL}/draws/one_card`)
-  .then(resp => resp.json())
-  .then(cards => renderCards(cards))
-}
-
-function threeCards() {
-  fetch(`${BASE_URL}/draws/three_cards`)
-  .then(resp => resp.json())
-  .then(cards => renderCards(cards))
-}
-
-function fiveCards() {
-  fetch(`${BASE_URL}/draws/five_cards`)
-  .then(resp => resp.json())
-  .then(cards => renderCards(cards))
-}
 
 function createDraw() {
 
