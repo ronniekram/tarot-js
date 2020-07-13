@@ -8,11 +8,11 @@ class Card{
     this.reversed = reversed
   }
 
-  function fetchCards() {
+   static fetchCards() {
     console.log("cards index button clicks");
     fetch(`${BASE_URL}/cards`)
     .then(resp => resp.json())
-    .then(cards => renderCards(cards))
+    .then(cards => this.renderCards(cards))
     console.log("cards fetched");
   }
 
@@ -20,7 +20,7 @@ class Card{
     rowDiv.innerHTML = "";
     cards.forEach(card => {
       let id = card.id
-      let name = titleCaseName(card.name);
+      let name = this.titleCaseName(card.name);
       let columnDiv = document.createElement('div');
       columnDiv.className = "col-md-4 mb-5"
       columnDiv.id = id

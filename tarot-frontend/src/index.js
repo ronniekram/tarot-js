@@ -5,7 +5,7 @@ const form = document.querySelector(".draw_cards")
 
 document.addEventListener("DOMContentLoaded", () => {
   navLinks.addEventListener("click", navigateTarot);
-  form.addEventListener("submit", createDraw);
+  form.addEventListener("submit", this.createDraw);
 });
 
 function navigateTarot() {
@@ -16,7 +16,7 @@ function navigateTarot() {
   } else if (event.target.id === "about") {
     renderAbout();
   } else if (event.target.id === "cards") {
-    fetchCards();
+    Card.fetchCards();
   } else if (event.target.id === "draws-link") {
     console.log("Previous Draw Link  clicked");
   }

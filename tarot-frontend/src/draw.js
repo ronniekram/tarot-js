@@ -4,8 +4,8 @@ class Draw{
     this.card_draws = card_draws
   }
 
-  static createDraw() {
-
+  createDraw() {
+    console.log("create draw")
   }
   
   static getAllDraws() {
