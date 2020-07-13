@@ -7,17 +7,18 @@ class Draw{
   static createDraw() {
     event.preventDefault();
     console.log("create draw")
+    let allCards = Card.all();
     if (event.target.id === "one") {
       console.log("draw one clicked")
-      let cards = _.sampleSize(Card.all, 1)
+      let cards = _.sampleSize(allCards, 1)
       Draw.addCards(cards);
     } else if (event.target.id === "three") {
         console.log("draw three clicked")
-        let cards = _.sampleSize(Card.all, 3)
+        let cards = _.sampleSize(allCards, 3)
         Draw.addCards(cards);
     } else if (event.target.id === "five") {
         console.log("draw five clicked")
-        let cards = _.sampleSize(Card.all, 5)
+        let cards = _.sampleSize(allCards, 5)
         Draw.addCards(cards);
     } 
   }

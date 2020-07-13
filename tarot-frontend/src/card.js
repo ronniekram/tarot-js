@@ -8,13 +8,13 @@ class Card{
     this.reversed = reversed
   }
 
-  //  static fetchCards() {
-  //   console.log("cards index button clicks");
-  //   fetch(`${BASE_URL}/cards`)
-  //   .then(resp => resp.json())
-  //   .then(cards => this.renderCards(cards))
-  //   console.log("cards fetched");
-  // }
+   static fetchCards() {
+    console.log("cards index button clicks");
+    fetch(`${BASE_URL}/cards`)
+    .then(resp => resp.json())
+    .then(cards => this.renderCards(cards))
+    console.log("cards fetched");
+  }
 
   static all() {
     let cardsArray = [];
