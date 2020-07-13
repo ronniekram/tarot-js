@@ -5,7 +5,7 @@ const form = document.querySelector(".draw_cards")
 
 document.addEventListener("DOMContentLoaded", () => {
   navLinks.addEventListener("click", navigateTarot);
-  form.addEventListener("submit", this.createDraw);
+  form.addEventListener("click", Draw.createDraw);
 });
 
 function navigateTarot() {
