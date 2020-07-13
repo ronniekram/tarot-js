@@ -22,14 +22,6 @@ function navigateTarot() {
   }
 }
 
-function fetchCards() {
-  console.log("cards index button clicks");
-  fetch(`${BASE_URL}/cards`)
-  .then(resp => resp.json())
-  .then(cards => renderCards(cards))
-  console.log("cards fetched");
-}
-
 function renderAbout() {
   console.log("about button clicked");
   rowDiv.innerHTML = `
@@ -75,65 +67,4 @@ function renderAbout() {
       Tarot card illustrations are generally a single image in an upright position, unlike common playing cards that display a dual image facing both right-side-up and upside-down. When Tarot cards are collected and shuffled or moved about, they can show up upside-down in a reading. The reversed Tarot card can be interpreted in various ways. Many believe this simply means the significance of the card is present in your life, but its powers are weakened or blocked by something. Others believe it means you’re unwilling to work with the energy the card signifies. And yet others interpret a reversed Tarot card to mean that the opposite or inverse of that card’s significance is present.
     </p>
   `
-}
-
-function renderCards(cards) {
-  rowDiv.innerHTML = "";
-  cards.forEach(card => {
-    let id = card.id
-    let name = titleCaseName(card.name);
-    let columnDiv = document.createElement('div');
-    columnDiv.className = "col-md-4 mb-5"
-    columnDiv.id = id
-
-    columnDiv.innerHTML += `
-      <div class="card h-100">
-      <div class="card-body" id="${id}">
-        <h2 class="card-title" id="${id}"> ${name}</h2>
-        <div class="card-img" id="${id}">
-          <img src="${card.image}" class="card-img">
-        </div>
-        <p class="card-text" id="${id}">${card.full_meaning}</p>
-      </div>
-      <div class="card-footer" id="${id}">
-        <p>
-          <strong>Upright:</strong> ${card.upright} 
-        </p>
-        <p>
-          <strong>Reversed:</strong> ${card.reversed}
-        </p>
-      </div>
-    </div>
-    `
-    rowDiv.appendChild(columnDiv)
-  })
-}
-
-function titleCaseName(name) {
-  let nameArray = name.split("-");
-  for (let i = 0; i < nameArray.length; i ++) {
-    nameArray[i] = nameArray[i].charAt(0).toUpperCase() + nameArray[i].slice(1).toLowerCase();
-  }
-  return nameArray.join(" ");
-}
-
-
-function createDraw() {
-
-}
-
-function getAllDraws() {
-
-}
-
-function getDraw() {
-
-}
-
-function deleteAllDraws() {
-
-}
-
-function deleteDraw() {
-
 }
