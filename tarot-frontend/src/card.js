@@ -24,59 +24,40 @@ class Card{
       return cardsArray;
   } 
 
-  static sampleCards(array, num) {
-    let cards = _.sampleSize(array, num);
-    return cards;
-  }
-
-  static oneCard() {
-    let cardArray = ["card1", "card2", "card3", "card4", "card5", "card6", "card7", "card8", "card9", "card10", "card11", "card12"]
-    let random = _.sample(cardArray)
-    return random;
-  }
-
-  static threeCard() {
-    let cardArray = ["card1", "card2", "card3", "card4", "card5", "card6", "card7", "card8", "card9", "card10", "card11", "card12"]
-    let random = _.sampleSize(cardArray, 3)
-    return random;
-  }
-
-  static fiveCard() {
-    let cardArray = ["card1", "card2", "card3", "card4", "card5", "card6", "card7", "card8", "card9", "card10", "card11", "card12"]
-    let random = _.sampleSize(cardArray, 5)
-    return random;
-  }
-
   static renderCards(cards) {
     rowDiv.innerHTML = "";
     cards.forEach(card => {
-      let id = card.id
-      // let name = this.titleCaseName(card.name);
-      let columnDiv = document.createElement('div');
-      columnDiv.className = "col-md-4 mb-5"
-      columnDiv.id = id
-  
-      columnDiv.innerHTML += `
-        <div class="card h-100">
-        <div class="card-body" id="${id}" draw-data-id="${this.id}">
-          <h2 class="card-title" id="${id}"> ${card.name}</h2>
-          <div class="card-img" id="${id}">
-            <img src="${card.image}" class="card-img">
-          </div>
-          <p class="card-text" id="${id}">${card.full_meaning}</p>
-        </div>
-        <div class="card-footer" id="${id}">
-          <p>
-            <strong>Upright:</strong> ${card.upright} 
-          </p>
-          <p>
-            <strong>Reversed:</strong> ${card.reversed}
-          </p>
-        </div>
-      </div>
-      `
-      rowDiv.appendChild(columnDiv)
+      this.renderCard(card);
     })
+  }
+
+  static renderCard(card) {
+    let id = card.id
+    // let name = this.titleCaseName(card.name);
+    let columnDiv = document.createElement('div');
+    columnDiv.className = "col-md-4 mb-5"
+    columnDiv.id = id
+
+    columnDiv.innerHTML += `
+      <div class="card h-100">
+      <div class="card-body" id="${id}" draw-data-id="${this.id}">
+        <h2 class="card-title" id="${id}"> ${card.name}</h2>
+        <div class="card-img" id="${id}">
+          <img src="${card.image}" class="card-img">
+        </div>
+        <p class="card-text" id="${id}">${card.full_meaning}</p>
+      </div>
+      <div class="card-footer" id="${id}">
+        <p>
+          <strong>Upright:</strong> ${card.upright} 
+        </p>
+        <p>
+          <strong>Reversed:</strong> ${card.reversed}
+        </p>
+      </div>
+    </div>
+    `
+    rowDiv.appendChild(columnDiv)
   }
   
   static titleCaseName(name) {

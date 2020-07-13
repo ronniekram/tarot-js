@@ -5,23 +5,38 @@ class Draw{
     this.card_draws = card_draws
   }
 
-  static createDraw() {
+  // static createDraw() {
+  //   event.preventDefault();
+  //   console.log("create draw")
+  //   console.log("all cards");
+  //   if (event.target.id === "one") {
+  //     console.log("draw one clicked")
+  //     let cards = Card.sampleCards(allCards, 1);
+  //     Card.renderCards(cards);
+  //   } else if (event.target.id === "three") {
+  //       console.log("draw three clicked")
+  //       let cards = Card.sampleCards(allCards, 3);
+  //       Card.renderCards(cards);
+  //   } else if (event.target.id === "five") {
+  //       console.log("draw five clicked")
+  //       let cards = Card.sampleCards(allCards, 5);
+  //       Card.renderCards(cards);
+  //   } 
+  // }
+
+  static renderDraw() {
     event.preventDefault();
-    console.log("create draw")
-    console.log("all cards");
-    if (event.target.id === "one") {
-      console.log("draw one clicked")
-      let cards = Card.sampleCards(allCards, 1);
-      Card.renderCards(cards);
-    } else if (event.target.id === "three") {
-        console.log("draw three clicked")
-        let cards = Card.sampleCards(allCards, 3);
-        Card.renderCards(cards);
-    } else if (event.target.id === "five") {
-        console.log("draw five clicked")
-        let cards = Card.sampleCards(allCards, 5);
-        Card.renderCards(cards);
-    } 
+    let button = event.target
+    if (button.id === "one") {
+      let cardAmount = Draw.randomNum(1);
+      console.log(cardAmount);
+    } else if (button.id === "three") {
+      let cardAmount = Draw.randomNum(3);
+      console.log(cardAmount);
+    } else if (button.id === "five") {
+      let cardAmount = Draw.randomNum(5);
+      console.log(cardAmount);
+    }
   }
   
   static getAllDraws() {
@@ -40,37 +55,21 @@ class Draw{
   
   }
 
-  // static addCards(cards) {
-  //   cards.forEach(card => {
-  //     let id = card.id
-  //     // let name = Card.titleCaseName(card.name);
-  //     let columnDiv = document.createElement('div');
-  //     columnDiv.className = "col-md-4 mb-5"
-  //     columnDiv.id = id
-  
-  //     columnDiv.innerHTML += `
-  //       <div class="card h-100">
-  //       <div class="card-body" id="${id}" draw-data-id="${id}">
-  //         <h2 class="card-title" id="${id}"> ${name}</h2>
-  //         <div class="card-img" id="${id}">
-  //           <img src="${card.image}" class="card-img">
-  //         </div>
-  //         <p class="card-text" id="${id}">${card.full_meaning}</p>
-  //       </div>
-  //       <div class="card-footer" id="${id}">
-  //         <p>
-  //           <strong>Upright:</strong> ${card.upright} 
-  //         </p>
-  //         <p>
-  //           <strong>Reversed:</strong> ${card.reversed}
-  //         </p>
-  //       </div>
-  //     </div>
-  //     `
-  //     rowDiv.appendChild(columnDiv)
-  //   })
-  //   console.log("draw created")
+  //  static randomNum(num) {
+  //   let random = [];
+  // while(random.length < num) {
+  //   let r = Math.floor(Math.random() * 78) + 1;
+  //   if(random.indexOf(r) === -1) random.push(r);
+  // }
+  // return random;
   // }
 
-
+  static findCards(num){
+    let random = [];
+    while(random.length < num) {
+      let r = Math.floor(Math.random() * 78) + 1;
+      if(random.indexOf(r) === -1) random.push(r);
+  }
+    return random;
+  }
 }
