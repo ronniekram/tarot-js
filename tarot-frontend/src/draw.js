@@ -1,3 +1,4 @@
+const allCards = Card.all();
 class Draw{
   constructor(question, card_draws) {
     this.question = question
@@ -7,19 +8,19 @@ class Draw{
   static createDraw() {
     event.preventDefault();
     console.log("create draw")
-    let allCards = Card.all();
+    console.log("all cards");
     if (event.target.id === "one") {
       console.log("draw one clicked")
-      let cards = _.sampleSize(allCards, 1)
-      Draw.addCards(cards);
+      let cards = Card.sampleCards(allCards, 1);
+      Card.renderCards(cards);
     } else if (event.target.id === "three") {
         console.log("draw three clicked")
-        let cards = _.sampleSize(allCards, 3)
-        Draw.addCards(cards);
+        let cards = Card.sampleCards(allCards, 3);
+        Card.renderCards(cards);
     } else if (event.target.id === "five") {
         console.log("draw five clicked")
-        let cards = _.sampleSize(allCards, 5)
-        Draw.addCards(cards);
+        let cards = Card.sampleCards(allCards, 5);
+        Card.renderCards(cards);
     } 
   }
   
@@ -39,37 +40,37 @@ class Draw{
   
   }
 
-  static addCards(cards) {
-    cards.forEach(card => {
-      let id = card.id
-      let name = Card.titleCaseName(card.name);
-      let columnDiv = document.createElement('div');
-      columnDiv.className = "col-md-4 mb-5"
-      columnDiv.id = id
+  // static addCards(cards) {
+  //   cards.forEach(card => {
+  //     let id = card.id
+  //     // let name = Card.titleCaseName(card.name);
+  //     let columnDiv = document.createElement('div');
+  //     columnDiv.className = "col-md-4 mb-5"
+  //     columnDiv.id = id
   
-      columnDiv.innerHTML += `
-        <div class="card h-100">
-        <div class="card-body" id="${id}" draw-data-id="${this.id}">
-          <h2 class="card-title" id="${id}"> ${name}</h2>
-          <div class="card-img" id="${id}">
-            <img src="${card.image}" class="card-img">
-          </div>
-          <p class="card-text" id="${id}">${card.full_meaning}</p>
-        </div>
-        <div class="card-footer" id="${id}">
-          <p>
-            <strong>Upright:</strong> ${card.upright} 
-          </p>
-          <p>
-            <strong>Reversed:</strong> ${card.reversed}
-          </p>
-        </div>
-      </div>
-      `
-      rowDiv.appendChild(columnDiv)
-    })
-    console.log("draw created")
-  }
+  //     columnDiv.innerHTML += `
+  //       <div class="card h-100">
+  //       <div class="card-body" id="${id}" draw-data-id="${id}">
+  //         <h2 class="card-title" id="${id}"> ${name}</h2>
+  //         <div class="card-img" id="${id}">
+  //           <img src="${card.image}" class="card-img">
+  //         </div>
+  //         <p class="card-text" id="${id}">${card.full_meaning}</p>
+  //       </div>
+  //       <div class="card-footer" id="${id}">
+  //         <p>
+  //           <strong>Upright:</strong> ${card.upright} 
+  //         </p>
+  //         <p>
+  //           <strong>Reversed:</strong> ${card.reversed}
+  //         </p>
+  //       </div>
+  //     </div>
+  //     `
+  //     rowDiv.appendChild(columnDiv)
+  //   })
+  //   console.log("draw created")
+  // }
 
 
 }
