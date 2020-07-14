@@ -2,7 +2,7 @@ class DrawsController < ApplicationController
   # before_action :set_draw, only: [:show, :destroy]
 
   def index 
-    draws = Draw.all.order(created_at: :asc) 
+    draws = Draw.all
     render json: draws,
       include: [:cards]
   end 

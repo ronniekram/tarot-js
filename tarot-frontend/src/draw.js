@@ -57,19 +57,20 @@ class Draw{
   }
   
   static getAllDraws() {
-    let drawsList = document.createElement('div');
     let ul = document.createElement('ul');
-    ul.className = "all-draws";
+    ul.className = "draws-list";
     fetch(`${BASE_URL}/draws`)
     .then(resp => resp.json())
     .then(draws => {
       draws.forEach(draw => {
         console.log(draw);
-        ul.innerHTML = `<li id="${draw.id}"><a href="#" id="${draw.id}"> ${draw.question} - ${draw.created_at} </a></li>`;
-        drawsList.appendChild(ul);
-        rowDiv.appendChild(drawsList);
+        let li = document.createElement('li');
+        li.id = draw.id;
+        li.innerHTML = `${draw.question} - ${draw.created_at}`;
+        ul.appendChild(li);
       })
     }) 
+    rowDiv.appendChild(ul);
   }
   
   static getDraw() {
