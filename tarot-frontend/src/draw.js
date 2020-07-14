@@ -28,13 +28,13 @@ class Draw{
     event.preventDefault();
     let button = event.target
     if (button.id === "one") {
-      let cardAmount = Draw.randomNum(1);
+      let cardAmount = Draw.findCards(1);
       console.log(cardAmount);
     } else if (button.id === "three") {
-      let cardAmount = Draw.randomNum(3);
+      let cardAmount = Draw.findCards(3);
       console.log(cardAmount);
     } else if (button.id === "five") {
-      let cardAmount = Draw.randomNum(5);
+      let cardAmount = Draw.findCards(5);
       console.log(cardAmount);
     }
   }
@@ -70,6 +70,9 @@ class Draw{
       let r = Math.floor(Math.random() * 78) + 1;
       if(random.indexOf(r) === -1) random.push(r);
   }
-    return random;
-  }
+  let spreadCards = random.filter(number => {
+    return allCards.indexOf(number) == -1
+  })
+  console.log(spreadCards);
+}
 }
