@@ -8,25 +8,20 @@ class Draw{
 
   static createDraw() {
     event.preventDefault();
-    let asked = document.getElementById("draw-question").value
-    let configObj = {
-      method: "POST",
+    let asked = document.getElementById('draw-queston').innerText;
+    fetch(`${BASE_URL}/draws`, {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
-        "Action": "application/json"
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
       },
-      body: JSON.Stringify()
-    }
-
-    fetch(`${BASE_URL}/draws`, configObj)
-    .then(resp => resp.json())
-    .then(drawInfo => {
-      let questionDiv = document.createElement('div');
-      questionDiv.className = "card text-white bg-secondary my-5 py-4 text-center";
-      questionDiv.id = drawInfo.id
-      questionDiv.innerText = `${drawInfo.asked}`
-      console.log("draw created");
+      body: JSON.stringify({
+        body: asked
+      })
     })
+  .then(res=>res.json())
+  .then(res => console.log(res));
+    Draw.renderDraw();
   }
 
   static renderDraw() {
