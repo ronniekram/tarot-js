@@ -35,6 +35,7 @@ class Draw{
       body: JSON.stringify({
         question: formQ.value,
         draw_cards: drawArray
+        draw_cards: []
       })
     }
     fetch(`${BASE_URL}/draws`, configObj)
@@ -46,6 +47,36 @@ class Draw{
         rowDiv.appendChild(questionDiv);
         // console.log(data.draw_cards)
         // Card.renderCards(data.draw_cards);
+      .then(drawData => {
+        questionDiv.class = "card text-white bg-secondary my-5 py-4 text-center";
+        questionDiv.innerHTML = `<h3>${drawData.question}</h3>`;
+        rowDiv.appendChild(questionDiv);
+      })
+      .catch(err => console.error('Caught error: ', err))
+
+      // Draw.renderDraw();
+  }
+
+  static renderDraw() {
+    event.preventDefault();
+    let button = event.target
+    if (button.id === "one") {
+      rowDiv.innerHTML = "";
+      let cardAmount = Draw.findCards(1);
+      cardAmount.forEach(card => {
+        Card.renderCard(card)
+      })
+    } else if (button.id === "three") {
+      rowDiv.innerHTML = "";
+      let cardAmount = Draw.findCards(3);
+      cardAmount.forEach(card => {
+        Card.renderCard(card)
+      })
+    } else if (button.id === "five") {
+      rowDiv.innerHTML = "";
+      let cardAmount = Draw.findCards(5);
+      cardAmount.forEach(card => {
+        Card.renderCard(card)
       })
       .catch(err => console.error('Caught error: ', err))
   }
@@ -104,6 +135,9 @@ class Draw{
       })
     }) 
     rowDiv.appendChild(ul);
+  
+  static getAllDraws() {
+
   }
   
   static getDraw() {
