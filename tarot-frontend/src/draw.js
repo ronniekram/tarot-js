@@ -57,16 +57,16 @@ class Draw{
   }
   
   static getAllDraws() {
+    rowDiv.innerHTML = ""
     let ul = document.createElement('ul');
-    ul.className = "draws-list";
     fetch(`${BASE_URL}/draws`)
     .then(resp => resp.json())
     .then(draws => {
       draws.forEach(draw => {
-        console.log(draw);
         let li = document.createElement('li');
         li.id = draw.id;
-        li.innerHTML = `${draw.question} - ${draw.created_at}`;
+        li.className = "draws-list"
+        li.innerHTML = `<a href="#" id="${draw.id}"> ${draw.question} - ${draw.created_at} </a>`;
         ul.appendChild(li);
       })
     }) 
@@ -74,8 +74,13 @@ class Draw{
   }
   
   static getDraw() {
-    fetch(`${BASE_URL}/draws/${id}`)
-  
+    console.log(event.target);
+    // console.log("link clicked")
+    // event.preventDefault();
+    // let id = event.target.id;
+    // fetch(`${BASE_URL}/draws/${id}`)
+    // .then(resp => resp.json())
+    // .then(console.log(resp))  
   }
   
   static deleteAllDraws() {
