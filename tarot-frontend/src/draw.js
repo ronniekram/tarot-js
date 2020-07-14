@@ -1,11 +1,4 @@
 const allCards = Card.all();
-let random = (num) => {
-  let spread = [];
-  while(spread.length < num) {
-    let r = Math.floor(Math.random() * 78) + 1;
-    if(spread.indexOf(r) === -1) spread.push(r);
-  } 
-}
 
 class Draw{
   constructor(question, card_draws) {
@@ -13,24 +6,6 @@ class Draw{
     this.card_draws = card_draws
   }
 
-  // static createDraw() {
-  //   event.preventDefault();
-  //   console.log("create draw")
-  //   console.log("all cards");
-  //   if (event.target.id === "one") {
-  //     console.log("draw one clicked")
-  //     let cards = Card.sampleCards(allCards, 1);
-  //     Card.renderCards(cards);
-  //   } else if (event.target.id === "three") {
-  //       console.log("draw three clicked")
-  //       let cards = Card.sampleCards(allCards, 3);
-  //       Card.renderCards(cards);
-  //   } else if (event.target.id === "five") {
-  //       console.log("draw five clicked")
-  //       let cards = Card.sampleCards(allCards, 5);
-  //       Card.renderCards(cards);
-  //   } 
-  // }
 
   static renderDraw() {
     event.preventDefault();
@@ -63,23 +38,15 @@ class Draw{
   
   }
 
-  // static randomNum(num) {
-  //   let random = [];
-  //   while(random.length < num) {
-  //     let r = Math.floor(Math.random() * 78) + 1;
-  //     random.push(r);
-  //   }
-  //   return random;
-  // }
-
   static findCards(num) {
-    // let cards = [];
-    // while(random.length < num) {
-    //   let r = Math.floor(Math.random() * 78) + 1;
-    //   if(random.indexOf(r) === -1) random.push(r);
-    // } 
-    allCards.filter(card => {
-      if((card.id).includes(random(num))) return card;
+    let random = [];
+    while(random.length < num) {
+      let r = Math.floor(Math.random() * 78) + 1;
+      random.push(r);
+    }
+    let spreadCards = allCards[0].filter(card => {
+      return random.indexOf(card.id) !== -1
     })
+    return spreadCards;
   }
 }
