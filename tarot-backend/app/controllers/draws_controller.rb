@@ -1,6 +1,5 @@
 class DrawsController < ApplicationController
   # before_action :set_draw, only: [:show, :destroy]
-  # before_action :set_cards, only: [:one_card, :three_card, :five_card]
 
   def index 
     draws = Draw.all.order(created_at: :asc) 
