@@ -8,44 +8,52 @@ class Draw{
 
   static createDraw() {
     event.preventDefault();
-    let asked = document.getElementById('draw-queston').innerText;
-    fetch(`${BASE_URL}/draws`, {
-      method: 'POST',
+    let configObj = {
+      method: "POST",
       headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        body: asked
-      })
-    })
-  .then(res=>res.json())
-  .then(res => console.log(res));
-    Draw.renderDraw();
+        "Content-Type": "application/json",
+        "Action": "application/json"
+      }
+    }
+    fetch(`${BASE_URL}/draws`, configObj)
+      .then(resp => resp.json())
+      .then(Draw.renderDraw)
+
+    // Draw.renderDraw();
   }
 
   static renderDraw() {
-    event.preventDefault();
     let button = event.target
     if (button.id === "one") {
       rowDiv.innerHTML = "";
       let cardAmount = Draw.findCards(1);
+      Draw.postQuestion()
       cardAmount.forEach(card => {
         Card.renderCard(card)
       })
     } else if (button.id === "three") {
       rowDiv.innerHTML = "";
       let cardAmount = Draw.findCards(3);
+      Draw.postQuestion()
       cardAmount.forEach(card => {
         Card.renderCard(card)
       })
     } else if (button.id === "five") {
       rowDiv.innerHTML = "";
       let cardAmount = Draw.findCards(5);
+      Draw.postQuestion()
       cardAmount.forEach(card => {
         Card.renderCard(card)
       })
     }
+  }
+
+  static postQuestion() {
+    let questionDiv = document.createElement('div');
+    let askedQ = document.getElementById("draw-question");
+    questionDiv.class = "card text-white bg-secondary my-5 py-4 text-center"
+    questionDiv.innerHTML = `<h3>${askedQ.value}</h3>`
+    rowDiv.appendChild(questionDiv);
   }
   
   static getAllDraws() {
