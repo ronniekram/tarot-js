@@ -1,4 +1,12 @@
 const allCards = Card.all();
+let random = (num) => {
+  let spread = [];
+  while(spread.length < num) {
+    let r = Math.floor(Math.random() * 78) + 1;
+    if(spread.indexOf(r) === -1) spread.push(r);
+  } 
+}
+
 class Draw{
   constructor(question, card_draws) {
     this.question = question
@@ -55,24 +63,23 @@ class Draw{
   
   }
 
-  //  static randomNum(num) {
+  // static randomNum(num) {
   //   let random = [];
-  // while(random.length < num) {
-  //   let r = Math.floor(Math.random() * 78) + 1;
-  //   if(random.indexOf(r) === -1) random.push(r);
-  // }
-  // return random;
+  //   while(random.length < num) {
+  //     let r = Math.floor(Math.random() * 78) + 1;
+  //     random.push(r);
+  //   }
+  //   return random;
   // }
 
-  static findCards(num){
-    let random = [];
-    while(random.length < num) {
-      let r = Math.floor(Math.random() * 78) + 1;
-      if(random.indexOf(r) === -1) random.push(r);
+  static findCards(num) {
+    // let cards = [];
+    // while(random.length < num) {
+    //   let r = Math.floor(Math.random() * 78) + 1;
+    //   if(random.indexOf(r) === -1) random.push(r);
+    // } 
+    allCards.filter(card => {
+      if((card.id).includes(random(num))) return card;
+    })
   }
-  let spreadCards = random.filter(number => {
-    return allCards.indexOf(number) == -1
-  })
-  console.log(spreadCards);
-}
 }
