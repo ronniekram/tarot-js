@@ -7,20 +7,26 @@ class Draw{
   }
 
   static createDraw() {
-    let asked = document.getElementById("draw-question")
+    event.preventDefault();
+    let asked = document.getElementById("draw-question").value
     let configObj = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Action": "application/json"
       },
-      body: JSON.stringify({
-        question: asked.value;
-      })
+      body: JSON.Stringify()
     }
+
     fetch(`${BASE_URL}/draws`, configObj)
     .then(resp => resp.json())
-    .then()
+    .then(drawInfo => {
+      let questionDiv = document.createElement('div');
+      questionDiv.className = "card text-white bg-secondary my-5 py-4 text-center";
+      questionDiv.id = drawInfo.id
+      questionDiv.innerText = `${drawInfo.asked}`
+      console.log("draw created");
+    })
   }
 
   static renderDraw() {
