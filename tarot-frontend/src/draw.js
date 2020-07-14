@@ -74,6 +74,7 @@ class Draw{
   }
   
   static getDraw() {
+    fetch(`${BASE_URL}/draws/${id}`)
   
   }
   
