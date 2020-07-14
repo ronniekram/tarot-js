@@ -8,6 +8,7 @@ class Draw{
   static createDraw() {
     event.preventDefault();
     let formQ = document.getElementById("draw-question");
+    let questionDiv = document.createElement('div');
     let configObj = {
       method: "POST",
       headers: {
@@ -15,33 +16,24 @@ class Draw{
         "Accept": "application/json"
       },
       body: JSON.stringify({
-        question: formQ.value
+        question: formQ.value,
+        draw_cards: []
       })
     }
-    // fetch(`${BASE_URL}/draws`, configObj)
-    //   .then(resp => resp.json())
-    //   .then(drawData => {
-    //     let questionDiv = document.createElement('div');
-    //     questionDiv.class = "card text-white bg-secondary my-5 py-4 text-center"
-    //     questionDiv.innerHTML = `<h3>${drawData.question}</h3>`
-    //     rowDiv.appendChild(questionDiv);
-    //   })
-    //   .catch(err => console.error('Caught error: ', err))
-      fetch(`${BASE_URL}/draws`, configObj)
-      .then(resp => {
-        if (resp.ok) {
-          return resp.json();
-        } else {
-          return Promise.reject(resp)
-        }
+    fetch(`${BASE_URL}/draws`, configObj)
+      .then(resp => resp.json())
+      .then(drawData => {
+        questionDiv.class = "card text-white bg-secondary my-5 py-4 text-center";
+        questionDiv.innerHTML = `<h3>${drawData.question}</h3>`;
+        rowDiv.appendChild(questionDiv);
       })
-      .then(data => console.log(data))
-      .catch(err => console.log('oopie!', err))
+      .catch(err => console.error('Caught error: ', err))
 
-    // Draw.renderDraw();
+      // Draw.renderDraw();
   }
 
   static renderDraw() {
+    event.preventDefault();
     let button = event.target
     if (button.id === "one") {
       rowDiv.innerHTML = "";
@@ -63,17 +55,9 @@ class Draw{
       })
     }
   }
-
-  // static postQuestion() {
-  //   let questionDiv = document.createElement('div');
-  //   let askedQ = document.getElementById("draw-question");
-  //   questionDiv.class = "card text-white bg-secondary my-5 py-4 text-center"
-  //   questionDiv.innerHTML = `<h3>${askedQ.value}</h3>`
-  //   rowDiv.appendChild(questionDiv);
-  // }
   
   static getAllDraws() {
-  
+
   }
   
   static getDraw() {

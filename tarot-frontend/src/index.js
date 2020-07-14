@@ -19,6 +19,7 @@ function navigateTarot() {
     Card.fetchCards();
   } else if (event.target.id === "draws-link") {
     console.log("Previous Draw Link  clicked");
+    Draw.getAllDraws();
   }
 }
 

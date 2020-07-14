@@ -1,3 +1,3 @@
 class DrawSerializer < ActiveModel::Serializer
-  attributes :id, :question
+  attributes :id, :question, :draw_cards
 end

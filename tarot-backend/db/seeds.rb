@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 require "rest-client"
+require "faker"
 
 cards = RestClient.get 'https://raw.githubusercontent.com/ronniekram/cards-json/master/cards.json'
 
@@ -21,3 +22,10 @@ cards_array.each do |card|
   reversed: card["reversed"]
   )
  end
+
+ sample_cards = Card.all.sample(2)
+ question = Faker::Quote.rand
+
+ 20.times do  
+  Draw.create(question: question, draw_cards: [sample_cards])
+ end 
