@@ -1,4 +1,4 @@
 class Draw < ApplicationRecord
-  serialize :draw_cards, Array
+  # serialize :card_ids, Array
   has_many :cards, :dependent => :destroy
 end

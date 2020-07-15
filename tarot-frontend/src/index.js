@@ -4,31 +4,31 @@ const navLinks = document.querySelector(".navbar-collapse")
 const form = document.querySelectorAll(".draw-btn");
 const list = document.querySelectorAll(".draws-list");
 
-document.addEventListener("DOMContentLoaded", () => {
-  navLinks.addEventListener("click", navigateTarot);
-  form.forEach(button => {
-    button.addEventListener("click", Draw.createDraw);
-  })
-  list.forEach(element => {
-    element.addEventListener("click", Draw.getDraw);
-  })
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   navLinks.addEventListener("click", navigateTarot);
+//   form.forEach(button => {
+//     button.addEventListener("click", Draw.createDraw);
+//   })
+//   list.forEach(element => {
+//     element.addEventListener("click", Draw.getDraw);
+//   })
+// });
 
-function navigateTarot() {
-  event.preventDefault();
-  if (event.target.id === "index") {
-    console.log("home link clicked")
-    rowDiv.innerHTML = ""
-  } else if (event.target.id === "about") {
-    renderAbout();
-  } 
-  // else if (event.target.id === "cards") {
-  //   Card.fetchCards(); } 
-    else if (event.target.id === "draws-link") {
-    console.log("Previous Draw Link  clicked");
-    Draw.getAllDraws();
-  }
-}
+// function navigateTarot() {
+//   event.preventDefault();
+//   if (event.target.id === "index") {
+//     console.log("home link clicked")
+//     rowDiv.innerHTML = ""
+//   } else if (event.target.id === "about") {
+//     renderAbout();
+//   } 
+//   // else if (event.target.id === "cards") {
+//   //   Card.fetchCards(); } 
+//     else if (event.target.id === "draws-link") {
+//     console.log("Previous Draw Link  clicked");
+//     Draw.getAllDraws();
+//   }
+// }
 
 function renderAbout() {
   console.log("about button clicked");
