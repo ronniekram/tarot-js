@@ -7,6 +7,7 @@ class CreateCards < ActiveRecord::Migration[6.0]
       t.string :upright
       t.string :reversed
       t.string :image
+      t.integer :draw_id
     end
   end
 end

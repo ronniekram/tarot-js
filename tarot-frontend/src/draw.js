@@ -1,4 +1,4 @@
-const allCards = Card.all();
+// const allCards = Card.all();
 class Draw{
   constructor(question, card_draw) {
     this.question = question
@@ -46,14 +46,15 @@ class Draw{
         rowDiv.appendChild(questionDiv);
         console.log(drawArray)
         // Card.renderCards(drawArray);
+        Draw.renderDraw();
       })
       .catch(err => console.error('Caught error: ', err))
 
-      // Draw.renderDraw();
+      Draw.renderDraw();
   }
 
   static renderDraw() {
-    event.preventDefault();
+    // event.preventDefault();
     let button = event.target
     if (button.id === "one") {
       rowDiv.innerHTML = "";
@@ -75,45 +76,6 @@ class Draw{
       })
     }
   }
-
-  // static createDraw() {
-  //   event.preventDefault();
-  //   let formQ = document.getElementById("draw-question");
-  //   let questionDiv = document.createElement('div');
-  //   let button = event.target
-    
-  //   let configObj = {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Accept": "application/json"
-  //     },
-  //     body: JSON.stringify({
-  //       question: formQ.value,
-  //       draw_cards: []
-  //     })
-  //   }
-  //   fetch(`${BASE_URL}/draws`, configObj)
-  //     .then(resp => resp.json())
-  //     .then(data => {
-  //       if (button.id === "one") {
-  //         data.draw_cards.push(Draw.findCards(1)); 
-  //       } else if (button.id === "three") {
-  //         data.draw_cards.push(Draw.findCards(3));
-  //       } else if (button.id === "five") {
-  //         data.draw_cards.push(Draw.findCards(5));
-  //       }
-
-  //       questionDiv.class = "card text-white bg-secondary my-5 py-4 text-center";
-  //       questionDiv.innerHTML = `<h3>${data.question}</h3>`;
-  //       rowDiv.appendChild(questionDiv);
-  //       let drawArray = data.draw_cards[0]
-  //       console.log(drawArray)
-  //       Card.renderCards(drawArray);
-  //     })
-  //     .catch(err => console.error('Caught error: ', err))
-  // }
-
   
   static getAllDraws() {
     rowDiv.innerHTML = ""
@@ -137,13 +99,21 @@ class Draw{
     event.preventDefault();
     // let draw = event.target;
     let id = event.target.id;
+    console.log("link clicked");
 
     fetch(`${BASE_URL}/draws/${id}`)
     .then(resp => resp.json())
     .then(data => {
       console.log(data)
     })
+    .catch(err => console.error('Caught error: ', err))
  
+  }
+
+  static displayDraw(draw) {
+    let drawDiv = document.createElement('div');
+
+
   }
   
   static deleteAllDraws() {

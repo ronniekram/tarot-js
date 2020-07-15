@@ -21,9 +21,10 @@ function navigateTarot() {
     rowDiv.innerHTML = ""
   } else if (event.target.id === "about") {
     renderAbout();
-  } else if (event.target.id === "cards") {
-    Card.fetchCards();
-  } else if (event.target.id === "draws-link") {
+  } 
+  // else if (event.target.id === "cards") {
+  //   Card.fetchCards(); } 
+    else if (event.target.id === "draws-link") {
     console.log("Previous Draw Link  clicked");
     Draw.getAllDraws();
   }

@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2020_07_11_053516) do
     t.string "upright"
     t.string "reversed"
     t.string "image"
+    t.integer "draw_id"
   end
 
   create_table "draws", force: :cascade do |t|
