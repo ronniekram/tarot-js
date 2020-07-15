@@ -23,6 +23,6 @@ cards_array.each do |card|
   )
  end
 
- 20.times do  
-  Draw.create(question: Faker::Dessert.variety, draw_cards: [cards_array.sample(2)])
- end
+#  20.times do  
+#   Draw.create(question: Faker::Dessert.variety, card_ids: [Random.rand(1..78)]);
+#  end
