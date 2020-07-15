@@ -9,7 +9,22 @@ class Draw{
     event.preventDefault();
     let formQ = document.getElementById("draw-question");
     let questionDiv = document.createElement('div');
+    let drawArray = [];
     let button = event.target
+  
+    if (button.id === "one") {
+      drawArray.push(Draw.findCards(1)); 
+      drawArray = drawArray[0]
+      console.log(drawArray)
+    } else if (button.id === "three") {
+      drawArray.push(Draw.findCards(3));
+      drawArray = drawArray[0]
+      console.log(drawArray)
+    } else if (button.id === "five") {
+      drawArray.push(Draw.findCards(5));
+      drawArray = drawArray[0]
+      console.log(drawArray)
+    }
     
     let configObj = {
       method: "POST",
@@ -19,36 +34,28 @@ class Draw{
       },
       body: JSON.stringify({
         question: formQ.value,
-        draw_cards: []
+        draw_cards: drawArray
       })
     }
     fetch(`${BASE_URL}/draws`, configObj)
       .then(resp => resp.json())
       .then(data => {
-        if (button.id === "one") {
-          data.draw_cards.push(Draw.findCards(1)); 
-        } else if (button.id === "three") {
-          data.draw_cards.push(Draw.findCards(3));
-        } else if (button.id === "five") {
-          data.draw_cards.push(Draw.findCards(5));
-        }
-
+  
         questionDiv.class = "card text-white bg-secondary my-5 py-4 text-center";
         questionDiv.innerHTML = `<h3>${data.question}</h3>`;
         rowDiv.appendChild(questionDiv);
-        let drawArray = data.draw_cards[0]
-        console.log(drawArray)
-        Card.renderCards(drawArray);
+        // console.log(data.draw_cards)
+        // Card.renderCards(data.draw_cards);
       })
       .catch(err => console.error('Caught error: ', err))
   }
 
   // static createDraw() {
   //   event.preventDefault();
-  //   let drawArray = []
-  //   let button = event.target
   //   let formQ = document.getElementById("draw-question");
   //   let questionDiv = document.createElement('div');
+  //   let button = event.target
+    
   //   let configObj = {
   //     method: "POST",
   //     headers: {
@@ -70,12 +77,13 @@ class Draw{
   //       } else if (button.id === "five") {
   //         data.draw_cards.push(Draw.findCards(5));
   //       }
-  
+
   //       questionDiv.class = "card text-white bg-secondary my-5 py-4 text-center";
   //       questionDiv.innerHTML = `<h3>${data.question}</h3>`;
   //       rowDiv.appendChild(questionDiv);
-  //       // Card.renderCards(drawArray);
-  //       console.log(data.draw_cards);
+  //       let drawArray = data.draw_cards[0]
+  //       console.log(drawArray)
+  //       Card.renderCards(drawArray);
   //     })
   //     .catch(err => console.error('Caught error: ', err))
   // }
