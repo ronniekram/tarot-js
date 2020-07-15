@@ -34,14 +34,7 @@ class Draw{
       },
       body: JSON.stringify({
         question: formQ.value,
-        cards_attributes: {
-          name: drawArray[0],
-          summary: drawArray[1],
-          full_meaning: drawArray[2],
-          upright: drawArray[3],
-          reversed: drawArray[4],
-          image: drawArray[5]
-        }
+        draw_cards: drawArray
       })
     }
     fetch(`${BASE_URL}/draws`, configObj)
