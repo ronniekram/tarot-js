@@ -14,16 +14,16 @@ class Draw{
   
     if (button.id === "one") {
       drawArray.push(Draw.findCards(1)); 
-      drawArray = drawArray[0]
-      console.log(drawArray)
+      drawArray = drawArray[0];
+      console.log(drawArray);
     } else if (button.id === "three") {
       drawArray.push(Draw.findCards(3));
-      drawArray = drawArray[0]
-      console.log(drawArray)
+      drawArray = drawArray[0];
+      console.log(drawArray);
     } else if (button.id === "five") {
       drawArray.push(Draw.findCards(5));
-      drawArray = drawArray[0]
-      console.log(drawArray)
+      drawArray = drawArray[0];
+      console.log(drawArray);
     }
     
     let configObj = {
@@ -35,22 +35,17 @@ class Draw{
       body: JSON.stringify({
         question: formQ.value,
         draw_cards: drawArray
-        draw_cards: []
       })
     }
     fetch(`${BASE_URL}/draws`, configObj)
       .then(resp => resp.json())
       .then(data => {
-  
+        console.log(data.question);
         questionDiv.class = "card text-white bg-secondary my-5 py-4 text-center";
         questionDiv.innerHTML = `<h3>${data.question}</h3>`;
         rowDiv.appendChild(questionDiv);
-        // console.log(data.draw_cards)
-        // Card.renderCards(data.draw_cards);
-      .then(drawData => {
-        questionDiv.class = "card text-white bg-secondary my-5 py-4 text-center";
-        questionDiv.innerHTML = `<h3>${drawData.question}</h3>`;
-        rowDiv.appendChild(questionDiv);
+        console.log(drawArray)
+        // Card.renderCards(drawArray);
       })
       .catch(err => console.error('Caught error: ', err))
 
@@ -78,7 +73,7 @@ class Draw{
       cardAmount.forEach(card => {
         Card.renderCard(card)
       })
-      .catch(err => console.error('Caught error: ', err))
+    }
   }
 
   // static createDraw() {
@@ -135,12 +130,19 @@ class Draw{
       })
     }) 
     rowDiv.appendChild(ul);
-  
-  static getAllDraws() {
-
   }
   
+  
   static getDraw() {
+    event.preventDefault();
+    // let draw = event.target;
+    let id = event.target.id;
+
+    fetch(`${BASE_URL}/draws/${id}`)
+    .then(resp => resp.json())
+    .then(data => {
+      console.log(data)
+    })
  
   }
   

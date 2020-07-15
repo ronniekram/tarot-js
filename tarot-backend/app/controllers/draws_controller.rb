@@ -30,7 +30,6 @@ class DrawsController < ApplicationController
 
   def draw_params 
     params.require(:draw).permit(:question, :draw_cards => [])
-    params.require(:draw).permit(:question, :draw_cards)
   end 
 
   def set_draw 

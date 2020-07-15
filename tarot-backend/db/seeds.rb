@@ -25,9 +25,4 @@ cards_array.each do |card|
 
  20.times do  
   Draw.create(question: Faker::Dessert.variety, draw_cards: [cards_array.sample(2)])
- sample_cards = Card.all.sample(2)
- question = Faker::Quote.rand
-
- 20.times do  
-  Draw.create(question: question, draw_cards: [sample_cards])
- end 
+ end
