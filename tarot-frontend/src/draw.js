@@ -34,7 +34,14 @@ class Draw{
       },
       body: JSON.stringify({
         question: formQ.value,
-        draw_cards: drawArray
+        cards_attributes: {
+          name: drawArray[0],
+          summary: drawArray[1],
+          full_meaning: drawArray[2],
+          upright: drawArray[3],
+          reversed: drawArray[4],
+          image: drawArray[5]
+        }
       })
     }
     fetch(`${BASE_URL}/draws`, configObj)
@@ -99,7 +106,7 @@ class Draw{
         let li = document.createElement('li');
         li.id = draw.id;
         li.className = "draws-list"
-        li.innerHTML = `<a href="#" id="${draw.id}"> ${draw.question} - ${draw.created_at} </a>`;
+        li.innerHTML = `<a href="#" id="${draw.id}"> ${draw.question}</a>`;
         ul.appendChild(li);
       })
     }) 

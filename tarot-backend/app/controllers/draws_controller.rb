@@ -8,8 +8,8 @@ class DrawsController < ApplicationController
   end 
 
   def create 
-    draw = Draw.new(draw_params)
-    if draw.save 
+    draw = Draw.create!(draw_params)
+    if draw 
       render json: draw,
         include: [:cards]
     end 
@@ -29,7 +29,10 @@ class DrawsController < ApplicationController
   private 
 
   def draw_params 
-    params.require(:draw).permit(:question, draw_cards: [])
+    params.require(:draw).permit(:question,
+     :card_ids => [],
+     :cards_attributes[:name, :summary, :full_meaning, :upright, :reversed, :image]
+     )
   end 
 
   def set_draw 
