@@ -19,79 +19,29 @@ class Draw{
       },
       body: JSON.stringify({
         question: formQ.value,
-        draw_cards: drawArray
+        draw_cards: []
       })
     }
     fetch(`${BASE_URL}/draws`, configObj)
       .then(resp => resp.json())
       .then(data => {
         if (button.id === "one") {
-          drawArray.push(Draw.findCards(1));
-          console.log(drawArray);
+          data.draw_cards.push(Draw.findCards(1)); 
         } else if (button.id === "three") {
-          drawArray.push(Draw.findCards(3));
-          console.log(drawArray);
+          data.draw_cards.push(Draw.findCards(3));
         } else if (button.id === "five") {
-          drawArray.push(Draw.findCards(5));
-          console.log(drawArray);
+          data.draw_cards.push(Draw.findCards(5));
         }
   
         questionDiv.class = "card text-white bg-secondary my-5 py-4 text-center";
         questionDiv.innerHTML = `<h3>${data.question}</h3>`;
         rowDiv.appendChild(questionDiv);
-        Card.renderCards(drawArray);
+        // Card.renderCards(drawArray);
+        console.log(data.draw_cards);
       })
       .catch(err => console.error('Caught error: ', err))
   }
 
-  // static createDraw() {
-  //   event.preventDefault();
-  //   let formQ = document.getElementById("draw-question");
-  //   let questionDiv = document.createElement('div');
-  //   let configObj = {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Accept": "application/json"
-  //     },
-  //     body: JSON.stringify({
-  //       question: formQ.value,
-  //       card_draw: []
-  //     })
-  //   }
-  //   fetch(`${BASE_URL}/draws`, configObj)
-  //     .then(resp => resp.json())
-  //     .then(drawData => {
-  //       questionDiv.class = "card text-white bg-secondary my-5 py-4 text-center";
-  //       questionDiv.innerHTML = `<h3>${drawData.question}</h3>`;
-  //       rowDiv.appendChild(questionDiv);
-  //     })
-  //     .catch(err => console.error('Caught error: ', err))
-  // }
-
-  // static renderDraw() {
-  //   event.preventDefault();
-  //   let button = event.target
-  //   if (button.id === "one") {
-  //     rowDiv.innerHTML = "";
-  //     let cardAmount = Draw.findCards(1);
-  //     cardAmount.forEach(card => {
-  //       Card.renderCard(card)
-  //     })
-  //   } else if (button.id === "three") {
-  //     rowDiv.innerHTML = "";
-  //     let cardAmount = Draw.findCards(3);
-  //     cardAmount.forEach(card => {
-  //       Card.renderCard(card)
-  //     })
-  //   } else if (button.id === "five") {
-  //     rowDiv.innerHTML = "";
-  //     let cardAmount = Draw.findCards(5);
-  //     cardAmount.forEach(card => {
-  //       Card.renderCard(card)
-  //     })
-  //   }
-  // }
   
   static getAllDraws() {
     rowDiv.innerHTML = ""
