@@ -136,3 +136,36 @@ class Draw{
     return spreadCards;
   }
 }
+
+
+fetch(`${BASE_URL}/cards`)
+  .then(resp => resp.json())
+  .then(cards => {
+
+  })
+
+
+  let id = card.id;
+  let columnDiv = document.createElement('div');
+  columnDiv.className = "col-md-4 mb-5"
+
+  columnDiv.innerHTML = `
+  <div class="card h-100">
+  <div class="card-body">
+    <h2 class="card-title"> ${card.name}</h2>
+    <div class="card-img">
+      <img src="${card.image}" class="card-img">
+    </div>
+    <p class="card-text">${card.full_meaning}</p>
+  </div>
+  <div class="card-footer">
+    <p>
+      <strong>Upright:</strong> ${card.upright} 
+    </p>
+    <p>
+      <strong>Reversed:</strong> ${card.reversed}
+    </p>
+  </div>
+  </div>
+  `
+  rowDiv.appendChild(columnDiv)

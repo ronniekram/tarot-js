@@ -38,11 +38,7 @@ class Draw{
 
     fetch(`${BASE_URL}/draws`, configObj)
       .then(resp => resp.json())
-      .then(data => {
-        console.log(data.question)
-        console.log(data.card_ids)
-      })
-
+      .then(cards => console.log(cards))
   }
 
   
@@ -54,9 +50,10 @@ class Draw{
 
   }
 
-  static renderCard(cards) {
+  static renderCard(card) {
 
   }
+
 
   static deleteDraws(draws) {
 

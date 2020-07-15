@@ -56,7 +56,7 @@ class Card{
   //       </p>
   //     </div>
   //   </div>
-  //   `
+  // //   `
   //   rowDiv.appendChild(columnDiv)
   // }
   
