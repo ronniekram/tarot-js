@@ -40,7 +40,7 @@ class Card{
 
     columnDiv.innerHTML += `
       <div class="card h-100">
-      <div class="card-body" id="${id}" draw-data-id="${this.id}">
+      <div class="card-body" id="${id}">
         <h2 class="card-title" id="${id}"> ${name}</h2>
         <div class="card-img" id="${id}">
           <img src="${card.image}" class="card-img">
