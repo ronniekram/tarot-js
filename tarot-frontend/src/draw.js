@@ -58,11 +58,11 @@ class Draw{
       <h2>${question}</h2>
     `
     cards.forEach(card => {
-      console.log(card);
+      let name = titleCaseName(card.name);
       cardDiv.innerHTML = `
       <div class="card h-100">
       <div class="card-body">
-        <h2 class="card-title"> ${card.name}</h2>
+        <h2 class="card-title"> ${name}</h2>
         <div class="card-img">
           <img src="${card.image}" class="card-img">
         </div>
@@ -98,25 +98,30 @@ class Draw{
         <button class="btn delete" delete-btn-id="${draw.id}">Delete?</button>`;
         ul.appendChild(li);
         let deleteBtn = document.querySelectorAll('.delete');
+        let list = document.querySelectorAll(".list");
+
         deleteBtn.forEach(button => {
           button.addEventListener("click", Draw.deleteDraw)
-        })
+        });
+
+        list.forEach(item => {
+          item.addEventListener("click", Draw.getDraw)
+        });
       })
     }) 
     rowDiv.appendChild(ul);
-    const list = document.querySelectorAll(".list");
-    list.forEach(item => item.addEventListener("click", console.log('get spread button clicked')))
+    let list = document.querySelectorAll(".list");
+    list.forEach(item => item.addEventListener("click", Draw.getDraw))
   }
 
   static getDraw() {
     event.preventDefault();
-    console.log('get spread button clicked')
-    // let draw = event.target;
-    // let id = draw.id;
+    let draw = event.target;
+    let id = draw.id;
 
-    // fetch(`${BASE_URL}/draws/${id}`)
-    // .then(resp => resp.json())
-    // .then(draw => Draw.renderDraw(draw)) 
+    fetch(`${BASE_URL}/draws/${id}`)
+    .then(resp => resp.json())
+    .then(draw => Draw.renderDraw(draw)) 
 
   }
 

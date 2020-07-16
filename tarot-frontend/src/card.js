@@ -60,11 +60,4 @@ class Card{
   //   rowDiv.appendChild(columnDiv)
   // }
   
-  // static titleCaseName(name) {
-  //   let nameArray = name.split("-");
-  //   for (let i = 0; i < nameArray.length; i ++) {
-  //     nameArray[i] = nameArray[i].charAt(0).toUpperCase() + nameArray[i].slice(1).toLowerCase();
-  //   }
-  //   return nameArray.join(" ");
-  // }
 }

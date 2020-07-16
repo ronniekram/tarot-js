@@ -170,5 +170,5 @@ fetch(`${BASE_URL}/cards`)
   `
   rowDiv.appendChild(columnDiv)
 
-
-  <button class="delete" delete-btn-id="${draw.id}">Delete</button>
+        li.innerHTML = `<a href="#" id="${draw.id}" class="list"> ${draw.question}</a>   
+        <button class="btn delete" delete-btn-id="${draw.id}">Delete?</button>`;
