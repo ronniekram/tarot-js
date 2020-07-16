@@ -88,6 +88,9 @@ class Draw{
     event.preventDefault();
     rowDiv.innerHTML = ""
     let ul = document.createElement('ul');
+    ul.innerHTML = `
+    <button class="btn btn-primary" id="destroy-all">Delete All?</button>
+    `
     fetch(`${BASE_URL}/draws`)
     .then(resp => resp.json())
     .then(draws => {
@@ -110,8 +113,9 @@ class Draw{
       })
     }) 
     rowDiv.appendChild(ul);
-    let list = document.querySelectorAll(".list");
-    list.forEach(item => item.addEventListener("click", Draw.getDraw))
+    let destroyAll = document.getElementById('destroy-all');
+    destroyAll.addEventListener("click", deleteDraws)
+
   }
 
   static getDraw() {
