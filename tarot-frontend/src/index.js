@@ -2,8 +2,8 @@ const BASE_URL = "http://localhost:3000"
 const navLinks = document.querySelector(".navbar-collapse");
 const form = document.querySelectorAll(".draw-btn");
 const rowDiv = document.getElementById("main-box");
-const questionDiv = document.getElementById("question");
 let formQ = document.getElementById("draw-question");
+const actionWell = document.getElementById("action-well")
 
 document.addEventListener("DOMContentLoaded", () => {
   navLinks.addEventListener("click", navigateTarot);
