@@ -57,7 +57,7 @@ class Draw{
     questionDiv.innerHTML = `
       <h2>${question}</h2>
     `
-    cards.map(card => {
+    cards.forEach(card => {
       let name = titleCaseName(card.name);
       cardDiv.innerHTML = `
       <div class="card h-100">
@@ -81,7 +81,8 @@ class Draw{
       drawDiv.appendChild(cardDiv);
     });
 
-    rowDiv.appendChild(drawDiv);
+    rowDiv.appendChild(questionDiv);
+    questionDiv.appendChild(drawDiv);
   }
 
   static getAllDraws() {
