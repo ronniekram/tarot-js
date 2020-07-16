@@ -114,7 +114,7 @@ class Draw{
     }) 
     rowDiv.appendChild(ul);
     let destroyAll = document.getElementById('destroy-all');
-    destroyAll.addEventListener("click", deleteDraws)
+    destroyAll.addEventListener("click", Draw.deleteDraws)
 
   }
 
@@ -132,15 +132,15 @@ class Draw{
 
   static deleteDraws() {
     console.log('delete all button clicked');
-    // let draws = event.target.parentElement;
-    // let configObj = {
-    //   method: "DELETE",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //     "Accept": "application/json"
-    //   }}
-    //   fetch(`${BASE_URL}/draws`, configObj)
-    //   .then(draws.remove())
+    let draws = event.target.parentElement;
+    let configObj = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }}
+      fetch(`${BASE_URL}/draws/destroyall`, configObj)
+      .then(draws.remove())
   }
 
   static deleteDraw() {
