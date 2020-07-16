@@ -42,24 +42,50 @@ class Draw{
   }
 
   static renderDraw(draw) {
-    let drawDiv = document.createElement(div);
-    let questionDiv = document.createElement(div);
+    rowDiv.innerHTML = ""
+    let drawDiv = document.createElement('div');
+    let questionDiv = document.createElement('div');
+    let cardDiv = document.createElement('div');
     let id = draw["id"];
     let question = draw["question"];
     let cards = draw["cards"];
+    console.log(cards);
     drawDiv.className = "display-spread";
     drawDiv.id = id
+    cardDiv.className = "col-md-4 mb-5";
 
     questionDiv.innerHTML = `
       <h2> ${question}</h2>
     `
-    cards.forEach(card => Draw.renderCard(card));
+    cards.forEach(card => {
+      cardDiv.innerHTML = `
+      <div class="card h-100">
+      <div class="card-body">
+        <h2 class="card-title"> ${card.name}</h2>
+        <div class="card-img">
+          <img src="${card.image}" class="card-img">
+        </div>
+        <p class="card-text">${card.full_meaning}</p>
+      </div>
+      <div class="card-footer">
+        <p>
+          <strong>Upright:</strong> ${card.upright} 
+        </p>
+        <p>
+          <strong>Reversed:</strong> ${card.reversed}
+        </p>
+      </div>
+      </div>
+      `
+      drawDiv.appendChild(cardDiv);
+    });
+
     rowDiv.appendChild(drawDiv);
     drawDiv.appendChild(questionDiv)
   }
 
   static renderCard(card) {
-    let cardDiv = document.createElement(div);
+    let cardDiv = document.createElement('div');
     cardDiv.className = "col-md-4 mb-5";
 
     cardDiv.innerHTML = `
@@ -81,7 +107,6 @@ class Draw{
     </div>
     </div>
     `
-    let drawDiv = document.getElementById(card.draw_id) 
     drawDiv.appendChild(cardDiv);
   }
 
