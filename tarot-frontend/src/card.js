@@ -16,14 +16,6 @@ class Card{
   //   console.log("cards fetched");
   // }
 
-  // static all() {
-  //   let cardsArray = [];
-  //   fetch(`${BASE_URL}/cards`)
-  //     .then(resp => resp.json())
-  //     .then(cards => cardsArray.push(cards)) 
-  //     return cardsArray;
-  // } 
-
   // static renderCards(cards) {
   //   rowDiv.innerHTML = "";
   //   cards.forEach(card => {

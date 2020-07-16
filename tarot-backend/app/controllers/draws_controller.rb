@@ -26,6 +26,11 @@ class DrawsController < ApplicationController
     draw.delete
   end 
 
+  def destroyall 
+    draws = Draw.all 
+    draws.delete
+  end 
+
   private 
 
   def draw_params 
