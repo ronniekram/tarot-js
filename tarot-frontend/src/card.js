@@ -8,16 +8,16 @@ class Card{
     this.reversed = reversed
   }
 
-    fetchCards() {
+    static fetchCards() {
       console.log("cards index button clicks");
       fetch(`${BASE_URL}/cards`)
       .then(resp => resp.json())
-      .then(cards => this.listCards(cards))
+      .then(cards => Card.listCards(cards))
       console.log("cards fetched");
   }
   
-    listCards(cards) {
-      event.preventDefault();
+    static listCards(cards) {
+      // event.preventDefault();
       rowDiv.innerHTML = "";
       let ol = document.createElement('ol');
       cards.forEach(card => {
@@ -39,6 +39,7 @@ class Card{
     
 
     showCard() {
+      event.preventDefault();
       console.log('this is where a card will go')
     }
   
