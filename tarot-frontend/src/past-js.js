@@ -169,3 +169,6 @@ fetch(`${BASE_URL}/cards`)
   </div>
   `
   rowDiv.appendChild(columnDiv)
+
+
+  <button class="delete" delete-btn-id="${draw.id}">Delete</button>

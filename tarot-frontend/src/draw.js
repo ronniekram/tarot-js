@@ -85,6 +85,7 @@ class Draw{
   }
 
   static getAllDraws() {
+    event.preventDefault();
     rowDiv.innerHTML = ""
     let ul = document.createElement('ul');
     fetch(`${BASE_URL}/draws`)
@@ -92,35 +93,59 @@ class Draw{
     .then(draws => {
       draws.forEach(draw => {
         let li = document.createElement('li');
-        li.className = "draws-list"
         li.id = draw.id;
-        li.innerHTML = `<a href="#" id="${draw.id}"> ${draw.question}</a>`;
+        li.innerHTML = `<a href="#" id="${draw.id}" class="list"> ${draw.question}</a>   
+        <button class="btn delete" delete-btn-id="${draw.id}">Delete?</button>`;
         ul.appendChild(li);
+        let deleteBtn = document.querySelectorAll('.delete');
+        deleteBtn.forEach(button => {
+          button.addEventListener("click", Draw.deleteDraw)
+        })
       })
     }) 
     rowDiv.appendChild(ul);
+    const list = document.querySelectorAll(".list");
+    list.forEach(item => item.addEventListener("click", console.log('get spread button clicked')))
   }
 
-  static getDraw(draw) {
+  static getDraw() {
+    event.preventDefault();
+    console.log('get spread button clicked')
+    // let draw = event.target;
+    // let id = draw.id;
+
+    // fetch(`${BASE_URL}/draws/${id}`)
+    // .then(resp => resp.json())
+    // .then(draw => Draw.renderDraw(draw)) 
 
   }
 
 
-  static deleteDraws(draws) {
+  static deleteDraws() {
     console.log('delete all button clicked');
-    let draws = event.target.parentElement;
+    // let draws = event.target.parentElement;
+    // let configObj = {
+    //   method: "DELETE",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     "Accept": "application/json"
+    //   }}
+    //   fetch(`${BASE_URL}/draws`, configObj)
+    //   .then(draws.remove())
+  }
+
+  static deleteDraw() {
+    console.log('delete button clicked');
+    let draw = event.target.parentElement;
+    let id = draw.id;
     let configObj = {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
         "Accept": "application/json"
       }}
-      fetch(`${BASE_URL}/draws`, configObj)
-      .then(draws.remove())
-  }
-
-  static deleteDraw(draw) {
-    console.log('delete button clicked');
+      fetch(`${BASE_URL}/draws/${id}`, configObj)
+      .then(draw.remove())
 
   }
 
