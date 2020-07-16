@@ -57,7 +57,7 @@ class Draw{
     questionDiv.innerHTML = `
       <h2>${question}</h2>
     `
-    cards.forEach(card => {
+    cards.map(card => {
       let name = titleCaseName(card.name);
       cardDiv.innerHTML = `
       <div class="card h-100">
@@ -165,10 +165,6 @@ class Draw{
       random.push(r)
     }
       return random;
-  }
-
-  static titleCaseName() {
-
   }
 
 
