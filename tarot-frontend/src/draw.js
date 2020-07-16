@@ -43,8 +43,8 @@ class Draw{
 
   static renderDraw(draw) {
     rowDiv.innerHTML = ""
+    questionDiv.innerHTML = ""
     let drawDiv = document.createElement('div');
-    let questionDiv = document.createElement('div');
     let cardDiv = document.createElement('div');
     let id = draw["id"];
     let question = draw["question"];
@@ -55,9 +55,10 @@ class Draw{
     cardDiv.className = "col-md-4 mb-5";
 
     questionDiv.innerHTML = `
-      <h2> ${question}</h2>
+      <h2>${question}</h2>
     `
     cards.forEach(card => {
+      console.log(card);
       cardDiv.innerHTML = `
       <div class="card h-100">
       <div class="card-body">
@@ -81,38 +82,23 @@ class Draw{
     });
 
     rowDiv.appendChild(drawDiv);
-    drawDiv.appendChild(questionDiv)
   }
 
-  static renderCard(card) {
-    let cardDiv = document.createElement('div');
-    cardDiv.className = "col-md-4 mb-5";
-
-    cardDiv.innerHTML = `
-    <div class="card h-100">
-    <div class="card-body">
-      <h2 class="card-title"> ${card.name}</h2>
-      <div class="card-img">
-        <img src="${card.image}" class="card-img">
-      </div>
-      <p class="card-text">${card.full_meaning}</p>
-    </div>
-    <div class="card-footer">
-      <p>
-        <strong>Upright:</strong> ${card.upright} 
-      </p>
-      <p>
-        <strong>Reversed:</strong> ${card.reversed}
-      </p>
-    </div>
-    </div>
-    `
-    drawDiv.appendChild(cardDiv);
-  }
-
-  
-  static getDraws(draws) {
-
+  static getAllDraws() {
+    rowDiv.innerHTML = ""
+    let ul = document.createElement('ul');
+    fetch(`${BASE_URL}/draws`)
+    .then(resp => resp.json())
+    .then(draws => {
+      draws.forEach(draw => {
+        let li = document.createElement('li');
+        li.className = "draws-list"
+        li.id = draw.id;
+        li.innerHTML = `<a href="#" id="${draw.id}"> ${draw.question}</a>`;
+        ul.appendChild(li);
+      })
+    }) 
+    rowDiv.appendChild(ul);
   }
 
   static getDraw(draw) {

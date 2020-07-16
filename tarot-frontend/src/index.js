@@ -1,26 +1,28 @@
 const BASE_URL = "http://localhost:3000"
-const rowDiv = document.getElementById("main-box");
 const navLinks = document.querySelector(".navbar-collapse");
 const form = document.querySelectorAll(".draw-btn");
+const rowDiv = document.getElementById("main-box");
+const questionDiv = document.getElementById("question");
+const list = document.querySelectorAll(".draws-list")
 
 document.addEventListener("DOMContentLoaded", () => {
   navLinks.addEventListener("click", navigateTarot);
   form.forEach(button => {
     button.addEventListener("click", Draw.createDraw);
-  })
+  });
+  // list.forEach(item => {item.addEventListener("click", Draw.getAllDraws)})
 });
 
 function navigateTarot() {
   event.preventDefault();
   if (event.target.id === "index") {
-    console.log("home link clicked")
     rowDiv.innerHTML = ""
   } else if (event.target.id === "about") {
     renderAbout();
   } else if (event.target.id === "cards") {
     console.log("All Cards Link  clicked");
   } else if (event.target.id === "draws-link") {
-    console.log("Previous Draw Link  clicked");
+    Draw.getAllDraws();
   }
 }
 
