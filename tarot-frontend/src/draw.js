@@ -44,20 +44,16 @@ class Draw{
     rowDiv.innerHTML = ""
     questionDiv.innerHTML = ""
     formQ.value = ""
-    let drawDiv = document.createElement('div');
-    let cardDiv = document.createElement('div');
-    let id = draw["id"];
     let question = draw["question"];
     let cards = draw["cards"];
     console.log(cards);
-    drawDiv.className = "display-spread";
-    drawDiv.id = id
-    cardDiv.className = "col-md-4 mb-5";
 
     questionDiv.innerHTML = `
       <h2>${question}</h2>
     `
     cards.forEach(card => {
+      let cardDiv = document.createElement('div');
+      cardDiv.className = "col-md-4 mb-5";
       let name = titleCaseName(card.name);
       cardDiv.innerHTML = `
       <div class="card h-100">
@@ -78,11 +74,10 @@ class Draw{
       </div>
       </div>
       `
-      drawDiv.appendChild(cardDiv);
+      questionDiv.appendChild(cardDiv);
     });
 
     rowDiv.appendChild(questionDiv);
-    questionDiv.appendChild(drawDiv);
   }
 
   static getAllDraws() {
