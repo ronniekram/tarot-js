@@ -107,10 +107,20 @@ class Draw{
 
 
   static deleteDraws(draws) {
-
+    console.log('delete all button clicked');
+    let draws = event.target.parentElement;
+    let configObj = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      }}
+      fetch(`${BASE_URL}/draws`, configObj)
+      .then(draws.remove())
   }
 
   static deleteDraw(draw) {
+    console.log('delete button clicked');
 
   }
 
