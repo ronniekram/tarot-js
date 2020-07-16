@@ -3,6 +3,7 @@ const navLinks = document.querySelector(".navbar-collapse");
 const form = document.querySelectorAll(".draw-btn");
 const rowDiv = document.getElementById("main-box");
 const questionDiv = document.getElementById("question");
+let formQ = document.getElementById("draw-question");
 
 document.addEventListener("DOMContentLoaded", () => {
   navLinks.addEventListener("click", navigateTarot);
@@ -19,6 +20,7 @@ function navigateTarot() {
   } else if (event.target.id === "about") {
     renderAbout();
   } else if (event.target.id === "cards") {
+    Card.fetchCards();
     console.log("All Cards Link  clicked");
   } else if (event.target.id === "draws-link") {
     Draw.getAllDraws();

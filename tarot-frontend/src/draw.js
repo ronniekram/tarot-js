@@ -7,7 +7,6 @@ class Draw{
 
   static createDraw() {
     event.preventDefault();
-    let formQ = document.getElementById("draw-question");
     let idsArray = [];
     let button = event.target;
 
@@ -44,6 +43,7 @@ class Draw{
   static renderDraw(draw) {
     rowDiv.innerHTML = ""
     questionDiv.innerHTML = ""
+    formQ.value = ""
     let drawDiv = document.createElement('div');
     let cardDiv = document.createElement('div');
     let id = draw["id"];
