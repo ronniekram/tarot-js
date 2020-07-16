@@ -27,7 +27,7 @@ class DrawsController < ApplicationController
   end 
 
   def destroyall 
-    Draw.all.destroy 
+    Draw.delete_all
   end 
 
   private 

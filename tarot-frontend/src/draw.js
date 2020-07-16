@@ -139,7 +139,7 @@ class Draw{
         "Content-Type": "application/json",
         "Accept": "application/json"
       }}
-      fetch(`${BASE_URL}/draws/destroyall`, configObj)
+      fetch(`${BASE_URL}/draws`, configObj)
       .then(draws.remove())
   }
 
