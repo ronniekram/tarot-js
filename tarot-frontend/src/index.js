@@ -1,6 +1,6 @@
 const BASE_URL = "http://localhost:3000"
 const rowDiv = document.getElementById("main-box");
-const navLinks = document.querySelector(".navbar-collapse")
+const navLinks = document.querySelector(".navbar-collapse");
 const form = document.querySelectorAll(".draw-btn");
 const list = document.querySelectorAll(".draws-list");
 
@@ -9,9 +9,6 @@ document.addEventListener("DOMContentLoaded", () => {
   form.forEach(button => {
     button.addEventListener("click", Draw.createDraw);
   })
-  // list.forEach(element => {
-  //   element.addEventListener("click", Draw.getDraw);
-  // })
 });
 
 function navigateTarot() {

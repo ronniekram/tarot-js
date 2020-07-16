@@ -8,8 +8,6 @@ class Draw{
   static createDraw() {
     event.preventDefault();
     let formQ = document.getElementById("draw-question");
-    let questionDiv = document.createElement('div');
-    let cardDiv = document.createElement('div');
     let idsArray = [];
     let button = event.target;
 
@@ -38,7 +36,53 @@ class Draw{
 
     fetch(`${BASE_URL}/draws`, configObj)
       .then(resp => resp.json())
-      .then(cards => console.log(cards))
+      .then(draw => {
+        Draw.renderDraw(draw)
+      })
+  }
+
+  static renderDraw(draw) {
+    let drawDiv = document.createElement(div);
+    let questionDiv = document.createElement(div);
+    let id = draw["id"];
+    let question = draw["question"];
+    let cards = draw["cards"];
+    drawDiv.className = "display-spread";
+    drawDiv.id = id
+
+    questionDiv.innerHTML = `
+      <h2> ${question}</h2>
+    `
+    cards.forEach(card => Draw.renderCard(card));
+    rowDiv.appendChild(drawDiv);
+    drawDiv.appendChild(questionDiv)
+  }
+
+  static renderCard(card) {
+    let cardDiv = document.createElement(div);
+    cardDiv.className = "col-md-4 mb-5";
+
+    cardDiv.innerHTML = `
+    <div class="card h-100">
+    <div class="card-body">
+      <h2 class="card-title"> ${card.name}</h2>
+      <div class="card-img">
+        <img src="${card.image}" class="card-img">
+      </div>
+      <p class="card-text">${card.full_meaning}</p>
+    </div>
+    <div class="card-footer">
+      <p>
+        <strong>Upright:</strong> ${card.upright} 
+      </p>
+      <p>
+        <strong>Reversed:</strong> ${card.reversed}
+      </p>
+    </div>
+    </div>
+    `
+    let drawDiv = document.getElementById(card.draw_id) 
+    drawDiv.appendChild(cardDiv);
   }
 
   
@@ -47,10 +91,6 @@ class Draw{
   }
 
   static getDraw(draw) {
-
-  }
-
-  static renderCard(card) {
 
   }
 
