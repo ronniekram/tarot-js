@@ -37,7 +37,8 @@ class Draw{
     fetch(`${BASE_URL}/draws`, configObj)
       .then(resp => resp.json())
       .then(draw => {
-        renderDraw(draw)
+        let created = new Draw(this.question, this.card_ids)
+        created.renderDraw(draw)
       })
   }
   // static 
@@ -100,11 +101,11 @@ class Draw{
         let list = document.querySelectorAll(".list");
 
         deleteBtn.forEach(button => {
-          button.addEventListener("click", deleteDraw)
+          button.addEventListener("click", this.deleteDraw)
         });
 
         list.forEach(item => {
-          item.addEventListener("click", getDraw)
+          item.addEventListener("click", this.getDraw)
         });
       })
     }) 
@@ -114,19 +115,18 @@ class Draw{
 
   }
 
-  static getDraw() {
+  getDraw() {
     event.preventDefault();
     let draw = event.target;
     let id = draw.id;
 
     fetch(`${BASE_URL}/draws/${id}`)
     .then(resp => resp.json())
-    .then(draw => renderDraw(draw)) 
+    .then(draw => this.renderDraw(draw)) 
 
   }
-
-  // static 
-  deleteDraws() {
+ 
+  static deleteDraws() {
     console.log('delete all button clicked');
     let draws = event.target.parentElement;
     let configObj = {
