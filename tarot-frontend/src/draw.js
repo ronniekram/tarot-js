@@ -12,13 +12,13 @@ class Draw{
     let button = event.target;
 
     if (button.id === "one") {
-      idsArray.push(Draw.randomNums(1));
+      idsArray.push(randomNums(1));
       idsArray = idsArray[0]
     } else if (button.id === "three") {
-        idsArray.push(Draw.randomNums(3));
+        idsArray.push(randomNums(3));
         idsArray = idsArray[0]
     } else if (button.id === "five") {
-      idsArray.push(Draw.randomNums(5));
+      idsArray.push(randomNums(5));
       idsArray = idsArray[0]
     }
 
@@ -37,11 +37,11 @@ class Draw{
     fetch(`${BASE_URL}/draws`, configObj)
       .then(resp => resp.json())
       .then(draw => {
-        Draw.renderDraw(draw)
+        renderDraw(draw)
       })
   }
-
-  static renderDraw(draw) {
+  // static 
+  renderDraw(draw) {
     rowDiv.innerHTML = ""
     questionDiv.innerHTML = ""
     formQ.value = ""
@@ -78,7 +78,7 @@ class Draw{
       rowDiv.appendChild(cardDiv);
     });
   }
-
+ 
   static getAllDraws() {
     event.preventDefault();
     questionDiv.innerHTML = ""
@@ -100,11 +100,11 @@ class Draw{
         let list = document.querySelectorAll(".list");
 
         deleteBtn.forEach(button => {
-          button.addEventListener("click", Draw.deleteDraw)
+          button.addEventListener("click", deleteDraw)
         });
 
         list.forEach(item => {
-          item.addEventListener("click", Draw.getDraw)
+          item.addEventListener("click", getDraw)
         });
       })
     }) 
@@ -121,12 +121,12 @@ class Draw{
 
     fetch(`${BASE_URL}/draws/${id}`)
     .then(resp => resp.json())
-    .then(draw => Draw.renderDraw(draw)) 
+    .then(draw => renderDraw(draw)) 
 
   }
 
-
-  static deleteDraws() {
+  // static 
+  deleteDraws() {
     console.log('delete all button clicked');
     let draws = event.target.parentElement;
     let configObj = {
@@ -139,7 +139,8 @@ class Draw{
       .then(draws.remove())
   }
 
-  static deleteDraw() {
+  // static
+  deleteDraw() {
     console.log('delete button clicked');
     let draw = event.target.parentElement;
     let id = draw.id;
@@ -153,8 +154,8 @@ class Draw{
       .then(draw.remove())
 
   }
-
-  static randomNums(num) {
+  // static
+  randomNums(num) {
     let random = [];
     while(random.length < num) {
       let r = Math.floor(Math.random() * 78) + 1;
