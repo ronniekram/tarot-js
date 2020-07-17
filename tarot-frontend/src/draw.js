@@ -7,6 +7,7 @@ class Draw{
 
   static createDraw() {
     event.preventDefault();
+    questionDiv.innerHTML = ""
     let idsArray = [];
     let button = event.target;
 
@@ -41,8 +42,6 @@ class Draw{
   }
 
   static renderDraw(draw) {
-    let questionDiv = document.createElement('div');
-    questionDiv.className = "text-white bg-secondary my-5 py-4 text-center"
     rowDiv.innerHTML = ""
     questionDiv.innerHTML = ""
     formQ.value = ""
@@ -53,7 +52,6 @@ class Draw{
     questionDiv.innerHTML = `
       <h2>${question}</h2>
     `
-    actionWell.appendChild(questionDiv);
     cards.forEach(card => {
       let cardDiv = document.createElement('div');
       cardDiv.className = "col-md-4 mb-5";
@@ -83,6 +81,7 @@ class Draw{
 
   static getAllDraws() {
     event.preventDefault();
+    questionDiv.innerHTML = ""
     rowDiv.innerHTML = ""
     let ul = document.createElement('ul');
     ul.innerHTML = `

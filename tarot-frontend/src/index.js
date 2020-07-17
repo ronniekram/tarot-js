@@ -3,7 +3,7 @@ const navLinks = document.querySelector(".navbar-collapse");
 const form = document.querySelectorAll(".draw-btn");
 const rowDiv = document.getElementById("main-box");
 let formQ = document.getElementById("draw-question");
-const actionWell = document.getElementById("action-well")
+const questionDiv = document.querySelector(".question");
 
 document.addEventListener("DOMContentLoaded", () => {
   navLinks.addEventListener("click", navigateTarot);
@@ -27,8 +27,17 @@ function navigateTarot() {
   }
 }
 
+function titleCaseName(name) {
+  let nameArray = name.split("-");
+  for (let i = 0; i < nameArray.length; i ++) {
+    nameArray[i] = nameArray[i].charAt(0).toUpperCase() + nameArray[i].slice(1).toLowerCase();
+  }
+  return nameArray.join(" ");
+}
+
 function renderAbout() {
   console.log("about button clicked");
+  rowDiv.innerHTML = ''
   rowDiv.innerHTML = `
   <br> <br>
   <h3>What is Tarot?</h3>
@@ -72,12 +81,4 @@ function renderAbout() {
       Tarot card illustrations are generally a single image in an upright position, unlike common playing cards that display a dual image facing both right-side-up and upside-down. When Tarot cards are collected and shuffled or moved about, they can show up upside-down in a reading. The reversed Tarot card can be interpreted in various ways. Many believe this simply means the significance of the card is present in your life, but its powers are weakened or blocked by something. Others believe it means you’re unwilling to work with the energy the card signifies. And yet others interpret a reversed Tarot card to mean that the opposite or inverse of that card’s significance is present.
     </p>
   `
-}
-
-function titleCaseName(name) {
-  let nameArray = name.split("-");
-  for (let i = 0; i < nameArray.length; i ++) {
-    nameArray[i] = nameArray[i].charAt(0).toUpperCase() + nameArray[i].slice(1).toLowerCase();
-  }
-  return nameArray.join(" ");
 }

@@ -1,4 +1,4 @@
 class Draw < ApplicationRecord
-  # serialize :card_ids, Array
+  validates :question, presence: true
   has_many :cards, :dependent => :destroy
 end
