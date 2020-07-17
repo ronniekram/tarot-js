@@ -35,6 +35,15 @@ function titleCaseName(name) {
   return nameArray.join(" ");
 }
 
+function randomNums(num) {
+  let random = [];
+  while(random.length < num) {
+    let r = Math.floor(Math.random() * 78) + 1;
+    random.push(r)
+  }
+    return random;
+}
+
 function renderAbout() {
   console.log("about button clicked");
   rowDiv.innerHTML = ''

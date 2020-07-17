@@ -154,15 +154,5 @@ class Draw{
       .then(draw.remove())
 
   }
-  // static
-  randomNums(num) {
-    let random = [];
-    while(random.length < num) {
-      let r = Math.floor(Math.random() * 78) + 1;
-      random.push(r)
-    }
-      return random;
-  }
-
 
 }
