@@ -36,12 +36,12 @@ class Draw{
     fetch(`${BASE_URL}/draws`, configObj)
       .then(resp => resp.json())
       .then(draw => {
-        let created = new Draw(draw)
-        created.renderDraw(draw)
+        // let created = new Draw(draw)
+        Draw.renderDraw(draw)
       })
   }
 
-  renderDraw(draw) {
+  static renderDraw(draw) {
     clearPage();
     let question = draw["question"];
     let cards = draw["cards"];
@@ -97,11 +97,11 @@ class Draw{
         let list = document.querySelectorAll(".list");
 
         deleteBtn.forEach(button => {
-          button.addEventListener("click", this.deleteDraw)
+          button.addEventListener("click", Draw.deleteDraw)
         });
 
         list.forEach(item => {
-          item.addEventListener("click", this.getDraw)
+          item.addEventListener("click", Draw.getDraw)
         });
       })
     }) 
@@ -111,7 +111,8 @@ class Draw{
 
   }
 
-  getDraw() {
+  static getDraw() {
+    console.log("get draw event");
     event.preventDefault();
     clearPage();
     let draw = event.target;
@@ -119,7 +120,7 @@ class Draw{
 
     fetch(`${BASE_URL}/draws/${id}`)
     .then(resp => resp.json())
-    .then(draw => renderDraw(draw)) 
+    .then(draw => Draw.renderDraw(draw)) 
 
   }
  
@@ -136,9 +137,9 @@ class Draw{
       .then(draws.remove())
   }
 
-  deleteDraw() {
+  static deleteDraw() {
     event.preventDefault();
-    console.log('delete button clicked');
+    console.log("delete one event");
     let draw = event.target.parentElement;
     let id = draw.id;
     let configObj = {
