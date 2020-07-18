@@ -37,7 +37,7 @@ class Draw{
     fetch(`${BASE_URL}/draws`, configObj)
       .then(resp => resp.json())
       .then(draw => {
-        let created = new Draw(this.question, this.card_ids)
+        let created = new Draw(draw)
         created.renderDraw(draw)
       })
   }
@@ -122,7 +122,7 @@ class Draw{
 
     fetch(`${BASE_URL}/draws/${id}`)
     .then(resp => resp.json())
-    .then(draw => this.renderDraw(draw)) 
+    .then(draw => renderDraw(draw)) 
 
   }
  
@@ -141,6 +141,7 @@ class Draw{
 
   // static
   deleteDraw() {
+    event.preventDefault();
     console.log('delete button clicked');
     let draw = event.target.parentElement;
     let id = draw.id;
