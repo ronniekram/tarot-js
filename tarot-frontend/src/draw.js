@@ -45,15 +45,25 @@ class Draw{
     clearPage();
     let question = draw["question"];
     let cards = draw["cards"];
+    let id = draw["id"];
+    let next = id + 1;
+    let previous = id - 1;
     console.log(cards);
 
     questionDiv.innerHTML = `
       <h2>${question}</h2>
     `
     cards.forEach(card => {
-      let cardDiv = document.createElement('div');
+      let cardDiv = document.createElement('div'); 
       cardDiv.className = "col-md-4 mb-5";
+      let navDiv = document.createElement('div');
+      navDiv.className = "col-xs-1 text-center";
       let name = titleCaseName(card.name);
+      navDiv.innerHTML = `
+      <button class ="btn btn-primary minus-one" id="previous">Previous Draw</button>
+
+      <button class ="btn btn-primary plus-one" id="next">Next Draw</button>
+      `
       cardDiv.innerHTML = `
       <div class="card h-100">
       <div class="card-body">
@@ -73,7 +83,8 @@ class Draw{
       </div>
       </div>
       `
-      rowDiv.appendChild(cardDiv);
+      navDiv.appendChild(cardDiv);
+      rowDiv.appendChild(navDiv);
     });
   }
  
