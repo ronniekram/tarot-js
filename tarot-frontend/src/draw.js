@@ -6,8 +6,10 @@ class Draw{
   }
 
   static createDraw() {
-    event.preventDefault();
-    questionDiv.innerHTML = ""
+    // event.preventDefault();
+    // rowDiv.innerHTML = "";
+    // questionDiv.innerHTML = ""
+    clearPage();
     let idsArray = [];
     let button = event.target;
 
@@ -43,8 +45,9 @@ class Draw{
   }
   // static 
   renderDraw(draw) {
-    rowDiv.innerHTML = ""
-    questionDiv.innerHTML = ""
+    // rowDiv.innerHTML = ""
+    // questionDiv.innerHTML = ""
+    clearPage();
     formQ.value = ""
     let question = draw["question"];
     let cards = draw["cards"];
@@ -81,9 +84,10 @@ class Draw{
   }
  
   static getAllDraws() {
-    event.preventDefault();
-    questionDiv.innerHTML = ""
-    rowDiv.innerHTML = ""
+    // event.preventDefault();
+    // questionDiv.innerHTML = ""
+    // rowDiv.innerHTML = ""
+    clearPage();
     let ul = document.createElement('ul');
     ul.innerHTML = `
     <button class="btn btn-primary" id="destroy-all">Delete All?</button>
@@ -116,7 +120,10 @@ class Draw{
   }
 
   getDraw() {
-    event.preventDefault();
+    // event.preventDefault();
+    // rowDiv.innerHTML = "";
+    // questionDiv.innerHTML = ""
+    clearPage();
     let draw = event.target;
     let id = draw.id;
 

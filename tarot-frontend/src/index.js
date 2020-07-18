@@ -27,6 +27,12 @@ function navigateTarot() {
   }
 }
 
+function clearPage() {
+  event.preventDefault();
+  rowDiv.innerHTML = "";
+  questionDiv.innerHTML = ""
+}
+
 function titleCaseName(name) {
   let nameArray = name.split("-");
   for (let i = 0; i < nameArray.length; i ++) {

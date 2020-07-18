@@ -9,8 +9,10 @@ class Card{
   }
 
     static fetchCards() {
-      event.preventDefault();
-      rowDiv.innerHTML = "";
+      // event.preventDefault();
+      // rowDiv.innerHTML = "";
+      // questionDiv.innerHTML = ""
+      clearPage();
       let ol = document.createElement('ol');
       fetch(`${BASE_URL}/cards`)
       .then(resp => resp.json())
