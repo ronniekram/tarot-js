@@ -28,9 +28,9 @@ function navigateTarot() {
 }
 
 function clearPage() {
-  event.preventDefault();
   rowDiv.innerHTML = "";
   questionDiv.innerHTML = ""
+  formQ.value = ""
 }
 
 function titleCaseName(name) {

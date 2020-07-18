@@ -1,4 +1,3 @@
-
 class Draw{
   constructor(question, card_ids) {
     this.question = question
@@ -6,10 +5,8 @@ class Draw{
   }
 
   static createDraw() {
-    // event.preventDefault();
-    // rowDiv.innerHTML = "";
-    // questionDiv.innerHTML = ""
-    clearPage();
+    event.preventDefault();
+    questionDiv.innerHTML = ""
     let idsArray = [];
     let button = event.target;
 
@@ -45,10 +42,10 @@ class Draw{
   }
   // static 
   renderDraw(draw) {
-    // rowDiv.innerHTML = ""
-    // questionDiv.innerHTML = ""
-    clearPage();
+    rowDiv.innerHTML = ""
+    questionDiv.innerHTML = ""
     formQ.value = ""
+    // clearPage();
     let question = draw["question"];
     let cards = draw["cards"];
     console.log(cards);
@@ -84,7 +81,7 @@ class Draw{
   }
  
   static getAllDraws() {
-    // event.preventDefault();
+    event.preventDefault();
     // questionDiv.innerHTML = ""
     // rowDiv.innerHTML = ""
     clearPage();
@@ -120,9 +117,7 @@ class Draw{
   }
 
   getDraw() {
-    // event.preventDefault();
-    // rowDiv.innerHTML = "";
-    // questionDiv.innerHTML = ""
+    event.preventDefault();
     clearPage();
     let draw = event.target;
     let id = draw.id;
