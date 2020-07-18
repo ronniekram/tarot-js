@@ -52,7 +52,7 @@ function randomNums(num) {
 
 function renderAbout() {
   console.log("about button clicked");
-  rowDiv.innerHTML = ''
+  clearPage();
   rowDiv.innerHTML = `
   <br> <br>
   <h3>What is Tarot?</h3>

@@ -40,12 +40,9 @@ class Draw{
         created.renderDraw(draw)
       })
   }
-  // static 
+
   renderDraw(draw) {
-    rowDiv.innerHTML = ""
-    questionDiv.innerHTML = ""
-    formQ.value = ""
-    // clearPage();
+    clearPage();
     let question = draw["question"];
     let cards = draw["cards"];
     console.log(cards);
@@ -82,8 +79,6 @@ class Draw{
  
   static getAllDraws() {
     event.preventDefault();
-    // questionDiv.innerHTML = ""
-    // rowDiv.innerHTML = ""
     clearPage();
     let ul = document.createElement('ul');
     ul.innerHTML = `
@@ -141,7 +136,6 @@ class Draw{
       .then(draws.remove())
   }
 
-  // static
   deleteDraw() {
     event.preventDefault();
     console.log('delete button clicked');
