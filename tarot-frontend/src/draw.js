@@ -46,7 +46,7 @@ class Draw{
     clearPage();
     let question = this.question
     let cards = this.cards;
-    
+
     questionDiv.innerHTML = `
       <h2>${question}</h2>
     `
@@ -81,8 +81,9 @@ class Draw{
     event.preventDefault();
     clearPage();
     let ul = document.createElement('ul');
+    
     ul.innerHTML = `
-    <button class="btn btn-primary" id="destroy-all">Delete All?</button>
+    <button class="btn btn-primary left" id="destroy-all">Delete All?</button> <br>
     `
     fetch(`${BASE_URL}/draws`)
     .then(resp => resp.json())
@@ -111,6 +112,7 @@ class Draw{
         });
       })
     }) 
+
     rowDiv.appendChild(ul);
     let destroyAll = document.getElementById('destroy-all');
     destroyAll.addEventListener("click", Draw.deleteDraws)
