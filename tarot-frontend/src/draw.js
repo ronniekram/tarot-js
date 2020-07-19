@@ -37,7 +37,7 @@ class Draw{
       .then(resp => resp.json())
       .then(draw => {
         let created = new Draw(draw)
-        created.renderDraw()
+        created.renderDraw(draw)
       })
   }
 
