@@ -104,17 +104,23 @@ class Draw{
         let li = document.createElement('li');
         li.id = draw.id;
         li.innerHTML = `<a href="#" id="${draw.id}" class="list"> ${draw.question}</a>   
-        <button class="btn delete" delete-btn-id="${draw.id}">Delete?</button>`;
+        <button class="btn delete" data-id="${draw.id}">Delete?</button>`;
         ul.appendChild(li);
         let deleteBtn = document.querySelectorAll('.delete');
         let list = document.querySelectorAll(".list");
 
         deleteBtn.forEach(button => {
-          button.addEventListener("click", draw.deleteDraw())
+          button.addEventListener("click", () => {
+            let remove = new Draw(draw);
+            remove.deleteDraw();
+          })
         });
 
         list.forEach(item => {
-          item.addEventListener("click", draw.getDraw())
+          item.addEventListener("click", () => {
+            let find = new Draw(draw);
+            find.renderDraw();
+          })
         });
       })
     }) 
@@ -124,20 +130,19 @@ class Draw{
 
   }
 
-  getDraw() {
-    clearPage();
-    console.log("get draw event");
-    event.preventDefault();
-    let draw = event.target;
-    let id = draw.id;
+  // getDraw() {
+  //   clearPage();
+  //   console.log("get draw event");
+  //   event.preventDefault();
+  //   let draw = event.target;
+  //   let id = draw.id;
 
-    fetch(`${BASE_URL}/draws/${id}`)
-    .then(resp => resp.json())
-    .then(drawInfo => {
-      drawInfo.renderDraw();
-    }) 
-
-  }
+  //   fetch(`${BASE_URL}/draws/${id}`)
+  //   .then(resp => resp.json())
+  //   .then(drawInfo => {
+  //     this.renderDraw(drawInfo);
+  //   }) 
+  // }
  
   static deleteDraws() {
     console.log('delete all button clicked');
