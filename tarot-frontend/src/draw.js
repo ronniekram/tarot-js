@@ -43,7 +43,6 @@ class Draw{
   }
 
   renderDraw() {
-    console.log(this);
     clearPage();
     let question = this.question
     let cards = this.cards;
@@ -119,7 +118,7 @@ class Draw{
         list.forEach(item => {
           item.addEventListener("click", () => {
             let find = new Draw(draw);
-            find.renderDraw();
+            find.getDraw();
           })
         });
       })
@@ -130,19 +129,20 @@ class Draw{
 
   }
 
-  // getDraw() {
-  //   clearPage();
-  //   console.log("get draw event");
-  //   event.preventDefault();
-  //   let draw = event.target;
-  //   let id = draw.id;
+  getDraw() {
+    clearPage();
+    console.log("get draw event");
+    event.preventDefault();
+    let draw = event.target;
+    let id = draw.id;
 
-  //   fetch(`${BASE_URL}/draws/${id}`)
-  //   .then(resp => resp.json())
-  //   .then(drawInfo => {
-  //     this.renderDraw(drawInfo);
-  //   }) 
-  // }
+    fetch(`${BASE_URL}/draws/${id}`)
+    .then(resp => resp.json())
+    .then(drawInfo => {
+      let display = new Draw(drawInfo);
+      display.renderDraw();
+    }) 
+  }
  
   static deleteDraws() {
     console.log('delete all button clicked');
