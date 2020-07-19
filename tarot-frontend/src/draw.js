@@ -110,11 +110,11 @@ class Draw{
         let list = document.querySelectorAll(".list");
 
         deleteBtn.forEach(button => {
-          button.addEventListener("click", Draw.deleteDraw)
+          button.addEventListener("click", draw.deleteDraw())
         });
 
         list.forEach(item => {
-          item.addEventListener("click", Draw.getDraw)
+          item.addEventListener("click", draw.getDraw())
         });
       })
     }) 
@@ -124,7 +124,7 @@ class Draw{
 
   }
 
-  static getDraw() {
+  getDraw() {
     clearPage();
     console.log("get draw event");
     event.preventDefault();
@@ -133,9 +133,8 @@ class Draw{
 
     fetch(`${BASE_URL}/draws/${id}`)
     .then(resp => resp.json())
-    .then(draw => {
-      let created = new Draw(draw)
-      created.renderDraw();
+    .then(drawInfo => {
+      drawInfo.renderDraw();
     }) 
 
   }
@@ -153,7 +152,7 @@ class Draw{
       .then(draws.remove())
   }
 
-  static deleteDraw() {
+  deleteDraw() {
     event.preventDefault();
     console.log("delete one event");
     let draw = event.target.parentElement;
