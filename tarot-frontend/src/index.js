@@ -4,6 +4,7 @@ const form = document.querySelectorAll(".draw-btn");
 const rowDiv = document.getElementById("main-box");
 let formQ = document.getElementById("draw-question");
 const questionDiv = document.querySelector(".question");
+const navDiv = document.querySelector(".previous-next");
 
 document.addEventListener("DOMContentLoaded", () => {
   navLinks.addEventListener("click", navigateTarot);
