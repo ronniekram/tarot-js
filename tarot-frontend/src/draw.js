@@ -1,7 +1,7 @@
 class Draw{
-  constructor(question, card_ids) {
-    this.question = question
-    this.card_ids = card_ids
+  constructor(drawInfo) {
+    this.question = drawInfo.question
+    this.cards = drawInfo.cards
   }
 
   static createDraw() {
@@ -35,17 +35,18 @@ class Draw{
 
     fetch(`${BASE_URL}/draws`, configObj)
       .then(resp => resp.json())
-      .then(draw => {
-        let created = new Draw(draw)
-        created.renderDraw(draw)
+      .then(drawInfo => {
+        let created = new Draw(drawInfo)
+        created.renderDraw()
       })
   }
 
-  renderDraw(draw) {
+  renderDraw() {
+    console.log(this);
     clearPage();
-    let question = draw["question"];
-    let cards = draw["cards"];
-    let id = draw["id"];
+    let question = this.question
+    let cards = this.cards;
+    let id = this.id;
     let next = id + 1;
     let previous = id - 1;
     console.log(cards);
@@ -108,11 +109,11 @@ class Draw{
         let list = document.querySelectorAll(".list");
 
         deleteBtn.forEach(button => {
-          button.addEventListener("click", draw.deleteDraw)
+          button.addEventListener("click", this.deleteDraw)
         });
 
         list.forEach(item => {
-          item.addEventListener("click", draw.getDraw)
+          item.addEventListener("click", this.getDraw)
         });
       })
     }) 
@@ -131,7 +132,7 @@ class Draw{
 
     fetch(`${BASE_URL}/draws/${id}`)
     .then(resp => resp.json())
-    .then(get => get.renderDraw) 
+    .then(get => this.renderDraw) 
 
   }
  
