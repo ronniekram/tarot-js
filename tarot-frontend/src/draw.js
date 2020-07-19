@@ -125,15 +125,18 @@ class Draw{
   }
 
   static getDraw() {
+    clearPage();
     console.log("get draw event");
     event.preventDefault();
-    clearPage();
     let draw = event.target;
     let id = draw.id;
 
     fetch(`${BASE_URL}/draws/${id}`)
     .then(resp => resp.json())
-    .then(draw => console.log(draw)) 
+    .then(draw => {
+      let created = new Draw(draw)
+      created.renderDraw();
+    }) 
 
   }
  
