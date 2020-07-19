@@ -1,6 +1,7 @@
 class Draw{
   constructor(drawInfo) {
     this.question = drawInfo.question
+    this.ids = drawInfo.card_ids
     this.cards = drawInfo.cards
   }
 
@@ -84,7 +85,7 @@ class Draw{
       </div>
       </div>
       `
-      navDiv.appendChild(cardDiv);
+      rowDiv.appendChild(cardDiv);
       rowDiv.appendChild(navDiv);
     });
   }
@@ -109,11 +110,11 @@ class Draw{
         let list = document.querySelectorAll(".list");
 
         deleteBtn.forEach(button => {
-          button.addEventListener("click", this.deleteDraw)
+          button.addEventListener("click", Draw.deleteDraw)
         });
 
         list.forEach(item => {
-          item.addEventListener("click", this.getDraw)
+          item.addEventListener("click", Draw.getDraw)
         });
       })
     }) 
@@ -123,7 +124,7 @@ class Draw{
 
   }
 
-  getDraw() {
+  static getDraw() {
     console.log("get draw event");
     event.preventDefault();
     clearPage();
@@ -132,7 +133,7 @@ class Draw{
 
     fetch(`${BASE_URL}/draws/${id}`)
     .then(resp => resp.json())
-    .then(get => this.renderDraw) 
+    .then(draw => console.log(draw)) 
 
   }
  
@@ -149,7 +150,7 @@ class Draw{
       .then(draws.remove())
   }
 
-  deleteDraw() {
+  static deleteDraw() {
     event.preventDefault();
     console.log("delete one event");
     let draw = event.target.parentElement;
