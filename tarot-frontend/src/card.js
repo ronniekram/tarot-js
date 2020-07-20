@@ -16,28 +16,28 @@ class Card{
         Card.splitCards(cards);
       });
   }
-    static renderCards(cards) {
-      cards.forEach(card => {
-        let name = titleCaseName(card.name);
-        let li = document.createElement('li');
-        li.innerHTML = `
-        <strong>${name}</strong> - ${card.summary}
-        `
-        ol.appendChild(li);
-      });
-      rowDiv.appendChild(ol);
-    }
+    // static renderCards(cards) {
+    //   cards.forEach(card => {
+    //     let name = titleCaseName(card.name);
+    //     let li = document.createElement('li');
+    //     li.innerHTML = `
+    //     <strong>${name}</strong> - ${card.summary}
+    //     `
+    //     ol.appendChild(li);
+    //   });
+    //   rowDiv.appendChild(ol);
+    // }
 
-    static renderCard(card, suite) {
-      let ol = document.createElement('ol');
-      ol.className = "suites-list";
-      let name = titleCaseName(card.name);
-      let li = document.createElement('li');
-      li.innerHTML = `
-      <strong>${suite}</strong>: <strong>${name}</strong> - ${card.summary}
-      `
-      ol.appendChild(li);
-    }
+    // static renderCard(card, suite) {
+    //   let ol = document.createElement('ol');
+    //   ol.className = "suites-list";
+    //   let name = titleCaseName(card.name);
+    //   let li = document.createElement('li');
+    //   li.innerHTML = `
+    //   <strong>${suite}</strong>: <strong>${name}</strong> - ${card.summary}
+    //   `
+    //   ol.appendChild(li);
+    // }
 
     static splitCards(cards) {
       let major = cards.splice(0,22);

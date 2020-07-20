@@ -6,7 +6,7 @@ class Draw{
   }
 
   static createDraw() {
-    event.preventDefault();
+    // event.preventDefault();
     questionDiv.innerHTML = ""
     let idsArray = [];
     let button = event.target;
@@ -78,7 +78,7 @@ class Draw{
   }
  
   static getAllDraws() {
-    event.preventDefault();
+    // event.preventDefault();
     clearPage();
     let ul = document.createElement('ul');
     
@@ -148,7 +148,7 @@ class Draw{
   }
 
   deleteDraw() {
-    event.preventDefault();
+    // event.preventDefault();
     console.log("delete one event");
     let draw = event.target.parentElement;
     let id = draw.id;
@@ -160,14 +160,6 @@ class Draw{
       }}
       fetch(`${BASE_URL}/draws/${id}`, configObj)
       .then(draw.remove())
-
-  }
-
-  static nextDraw() {
-
-  }
-
-  static previousDraw() {
 
   }
 
