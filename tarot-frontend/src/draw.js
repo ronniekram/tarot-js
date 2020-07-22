@@ -6,7 +6,7 @@ class Draw{
   }
 
   static createDraw() {
-    // event.preventDefault();
+    event.preventDefault();
     questionDiv.innerHTML = ""
     let idsArray = [];
     let button = event.target;
@@ -78,7 +78,6 @@ class Draw{
   }
  
   static getAllDraws() {
-    // event.preventDefault();
     clearPage();
     let ul = document.createElement('ul');
     
@@ -148,7 +147,6 @@ class Draw{
   }
 
   deleteDraw() {
-    // event.preventDefault();
     console.log("delete one event");
     let draw = event.target.parentElement;
     let id = draw.id;

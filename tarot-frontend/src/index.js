@@ -2,7 +2,7 @@ const BASE_URL = "http://localhost:3000"
 const navLinks = document.querySelector(".navbar-collapse");
 const form = document.querySelectorAll(".draw-btn");
 const rowDiv = document.getElementById("main-box");
-let formQ = document.getElementById("draw-question");
+const formQ = document.getElementById("draw-question");
 const questionDiv = document.querySelector(".question");
 const navDiv = document.querySelector(".previous-next");
 
@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function navigateTarot() {
-  event.preventDefault();
+  // event.preventDefault();
   if (event.target.id === "index") {
     rowDiv.innerHTML = ""
   } else if (event.target.id === "about") {

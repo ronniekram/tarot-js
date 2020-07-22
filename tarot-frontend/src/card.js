@@ -16,35 +16,13 @@ class Card{
         Card.splitCards(cards);
       });
   }
-    // static renderCards(cards) {
-    //   cards.forEach(card => {
-    //     let name = titleCaseName(card.name);
-    //     let li = document.createElement('li');
-    //     li.innerHTML = `
-    //     <strong>${name}</strong> - ${card.summary}
-    //     `
-    //     ol.appendChild(li);
-    //   });
-    //   rowDiv.appendChild(ol);
-    // }
-
-    // static renderCard(card, suite) {
-    //   let ol = document.createElement('ol');
-    //   ol.className = "suites-list";
-    //   let name = titleCaseName(card.name);
-    //   let li = document.createElement('li');
-    //   li.innerHTML = `
-    //   <strong>${suite}</strong>: <strong>${name}</strong> - ${card.summary}
-    //   `
-    //   ol.appendChild(li);
-    // }
 
     static splitCards(cards) {
-      let major = cards.splice(0,22);
-      let swords = cards.splice(0,14);
-      let cups = cards.splice(0,14);
-      let wands = cards.splice(0,14);
-      let pentacles = cards.splice(0,14)
+      const major = cards.splice(0,22);
+      const swords = cards.splice(0,14);
+      const cups = cards.splice(0,14);
+      const wands = cards.splice(0,14);
+      const pentacles = cards.splice(0,14)
       let ol = document.createElement('ol');
 
       major.forEach(card => {
