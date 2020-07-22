@@ -80,13 +80,23 @@ class Draw{
   static getAllDraws() {
     clearPage();
     let ul = document.createElement('ul');
-    
+    // const destroyAll = document.getElementById('destroy-all');
     ul.innerHTML = `
     <button class="btn btn-primary left" id="destroy-all">Delete All?</button> <br>
     `
     fetch(`${BASE_URL}/draws`)
     .then(resp => resp.json())
     .then(draws => {
+      draws = draws.sort((a, b) => {
+        if (a.question < b.question) {
+          return -1;
+        } else if (a.question > b.question) {
+          return 1;
+        } else {
+          return 0;
+        }
+      })
+      console.log(draws)
       draws.forEach(draw => {
         let li = document.createElement('li');
         li.id = draw.id;
@@ -113,7 +123,7 @@ class Draw{
     }) 
 
     rowDiv.appendChild(ul);
-    let destroyAll = document.getElementById('destroy-all');
+    const destroyAll = document.getElementById('destroy-all');
     destroyAll.addEventListener("click", Draw.deleteDraws)
 
   }
@@ -121,7 +131,6 @@ class Draw{
   getDraw() {
     clearPage();
     console.log("get draw event");
-    event.preventDefault();
     let draw = event.target;
     let id = draw.id;
 

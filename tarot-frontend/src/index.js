@@ -15,9 +15,8 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 function navigateTarot() {
-  // event.preventDefault();
   if (event.target.id === "index") {
-    rowDiv.innerHTML = ""
+    clearPage();
   } else if (event.target.id === "about") {
     renderAbout();
   } else if (event.target.id === "cards") {

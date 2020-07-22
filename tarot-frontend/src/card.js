@@ -73,6 +73,6 @@ class Card{
       rowDiv.appendChild(ol);
 
 
-    }
+      }
       
     }
