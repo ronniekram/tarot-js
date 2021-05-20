@@ -9,26 +9,28 @@ class Card {
     this.desc = desc
   };
 
-  static fetchCards = () => {
-    clearPage();
+  static allCards;
 
+  static fetchCards = () => {
     fetch(`${BASE_URL}/cards`)
     .then(resp => resp.json())
-    .then(cards => console.log(cards));
-  };
+    .then(cards => this.allCards.push(cards))
+;  };
 
   // can i use null as an argument to filter?
   static filterSuit = (cards, suit) => {
     return cards.filter(card => card.suit === suit)
   };
 
-  static fuzzySearch = (cards, query) => {
+  static fuzzySearch = (query) => {
     const options = {
       findAllMatches: true,
-      keys: [name, suit]
+      keys: ['name']
     }
-    const fuse = new Fuse(cards, options)
-    const result = fuse.search(query)
+    debugger
+    const fuse = new Fuse(Card.allCards, options)
+    debugger
+    return fuse.search(query)
   };
 
   // More Info link will show full desc modal

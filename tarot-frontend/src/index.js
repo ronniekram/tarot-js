@@ -8,6 +8,8 @@ const questionDiv = document.querySelector(".question");
 const navDiv = document.querySelector(".previous-next");
 
 document.addEventListener("DOMContentLoaded", () => {
+  Card.fetchCards();
+  // console.log(Card.allCards)
   navLinks.addEventListener("click", navigateTarot);
 
   form.forEach(button => {
