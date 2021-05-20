@@ -16,7 +16,6 @@ cards_array.each do |card|
     Card.create(
     name: card["name"],
     suit: card["suit"],
-    cardType: card["type"],
     summary: card["summary"],
     image: card["image"],
     upright: card["meaning_up"],
