@@ -12,9 +12,7 @@ class Card{
       clearPage();
       fetch(`${BASE_URL}/cards`)
       .then(resp => resp.json())
-      .then(cards => {
-        Card.splitCards(cards);
-      });
+      .then(cards => Card.splitCards(cards));
   }
 
     static splitCards(cards) {

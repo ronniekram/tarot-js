@@ -37,8 +37,8 @@ class Draw{
     fetch(`${BASE_URL}/draws`, configObj)
       .then(resp => resp.json())
       .then(drawInfo => {
-        let created = new Draw(drawInfo)
-        created.renderDraw()
+        let draw = new Draw(drawInfo)
+        draw.renderDraw()
       })
   }
 
@@ -96,7 +96,7 @@ class Draw{
           return 0;
         }
       })
-      console.log(draws)
+      
       draws.forEach(draw => {
         let li = document.createElement('li');
         li.id = draw.id;
