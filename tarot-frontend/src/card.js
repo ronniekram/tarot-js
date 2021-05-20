@@ -1,8 +1,7 @@
 class Card{
-  constructor(name, suit, cardType, summary, image, upright, reversed, desc) {
+  constructor(name, suit, summary, image, upright, reversed, desc) {
     this.name = name
     this.suit = suit
-    this.cardType = cardType
     this.summary = summary
     this.image = image
     this.upright = upright

@@ -34,6 +34,7 @@ clearPage = () => {
   formQ.value = ""
 }
 
+
 titleCaseName = (name) => {
   let nameArray = name.split("-");
   for (let i = 0; i < nameArray.length; i ++) {

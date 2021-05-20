@@ -21,6 +21,6 @@ class Card {
   // can i use null as an argument to filter?
   static filterSuit(cards, suit) {
     return cards.filter(card => card.suit === suit)
-  }
+  };
 
 }
