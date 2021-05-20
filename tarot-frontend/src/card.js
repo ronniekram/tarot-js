@@ -1,11 +1,13 @@
 class Card{
-  constructor(name, summary, full_meaning, image, upright, reversed) {
+  constructor(name, suit, cardType, summary, image, upright, reversed, desc) {
     this.name = name
+    this.suit = suit
+    this.cardType = cardType
     this.summary = summary
-    this.full_meaning = full_meaning
     this.image = image
     this.upright = upright
     this.reversed = reversed
+    this.desc = desc
   }
 
     static fetchCards() {
