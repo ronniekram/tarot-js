@@ -14,19 +14,18 @@ ActiveRecord::Schema.define(version: 2020_07_11_053516) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
+    t.string "suit"
+    t.string "cardType"
     t.text "summary"
-    t.text "full_meaning"
+    t.string "image"
     t.string "upright"
     t.string "reversed"
-    t.string "image"
-    t.integer "draw_id"
+    t.text "desc"
   end
 
   create_table "draws", force: :cascade do |t|
     t.string "question"
     t.integer "card_ids"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
 end

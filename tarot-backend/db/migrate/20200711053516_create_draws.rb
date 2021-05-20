@@ -3,7 +3,6 @@ class CreateDraws < ActiveRecord::Migration[6.0]
     create_table :draws do |t|
       t.string :question
       t.integer :card_ids
-      t.timestamps
     end
   end
 end

@@ -8,19 +8,21 @@
 require "rest-client"
 require "faker"
 
-cards = RestClient.get 'https://raw.githubusercontent.com/ronniekram/cards-json/master/cards.json'
+cards = RestClient.get 'https://raw.githubusercontent.com/ronniekram/tarot-js-v2/main/front/src/cards.json'
 
 cards_array = JSON.parse(cards)['cards']
 
 cards_array.each do |card|
-  Card.create(
-  name: card["name"],
-  summary: card["summary"],
-  full_meaning: card["full_meaning"],
-  image: card["image"],
-  upright: card["upright"],
-  reversed: card["reversed"]
-  )
+    Card.create(
+    name: card["name"],
+    suit: card["suit"],
+    cardType: card["type"],
+    summary: card["summary"],
+    image: card["image"],
+    upright: card["meaning_up"],
+    reversed: card["meaning_rev"],
+    desc: card["desc"]
+    )
  end
 
 #  20.times do  

@@ -10,6 +10,7 @@ class Card{
 
     static fetchCards() {
       clearPage();
+
       fetch(`${BASE_URL}/cards`)
       .then(resp => resp.json())
       .then(cards => Card.splitCards(cards));
@@ -20,12 +21,14 @@ class Card{
       const swords = cards.splice(0,14);
       const cups = cards.splice(0,14);
       const wands = cards.splice(0,14);
-      const pentacles = cards.splice(0,14)
-      let ol = document.createElement('ol');
+      const pentacles = cards.splice(0,14);
+
+      const deck = [major, swords, cups, wands, pentacles];
+      const ol = document.createElement('ol');
 
       major.forEach(card => {
-        let name = titleCaseName(card.name);
-        let li = document.createElement('li');
+        const name = titleCaseName(card.name);
+        const li = document.createElement('li');
         li.innerHTML = `
         <strong>Major Arcana</strong>: <strong>${name}</strong> - ${card.summary}
         `
