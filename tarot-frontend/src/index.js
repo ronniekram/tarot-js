@@ -1,5 +1,4 @@
 const BASE_URL = "http://localhost:3000"
-
 const navLinks = document.querySelector(".navbar-collapse");
 const form = document.querySelectorAll(".draw-btn");
 const rowDiv = document.getElementById("main-box");
@@ -8,36 +7,33 @@ const questionDiv = document.querySelector(".question");
 const navDiv = document.querySelector(".previous-next");
 
 document.addEventListener("DOMContentLoaded", () => {
-  Card.fetchCards();
-  // console.log(Card.allCards)
   navLinks.addEventListener("click", navigateTarot);
-
   form.forEach(button => {
     button.addEventListener("click", Draw.createDraw);
   });
 
 });
 
- navigateTarot = (e) => {
-  if (e.target.id === "index") {
+function navigateTarot() {
+  if (event.target.id === "index") {
     clearPage();
-  } else if (e.target.id === "about") {
+  } else if (event.target.id === "about") {
     renderAbout();
-  } else if (e.target.id === "cards") {
+  } else if (event.target.id === "cards") {
     Card.fetchCards();
-  } else if (e.target.id === "draws-link") {
+    console.log("All Cards Link  clicked");
+  } else if (event.target.id === "draws-link") {
     Draw.getAllDraws();
   }
 }
 
-clearPage = () => {
+function clearPage() {
   rowDiv.innerHTML = "";
   questionDiv.innerHTML = ""
   formQ.value = ""
 }
 
-
-titleCaseName = (name) => {
+function titleCaseName(name) {
   let nameArray = name.split("-");
   for (let i = 0; i < nameArray.length; i ++) {
     nameArray[i] = nameArray[i].charAt(0).toUpperCase() + nameArray[i].slice(1).toLowerCase();
@@ -45,7 +41,7 @@ titleCaseName = (name) => {
   return nameArray.join(" ");
 }
 
-randomNums = (num) => {
+function randomNums(num) {
   let random = [];
   while(random.length < num) {
     let r = Math.floor(Math.random() * 78) + 1;
@@ -54,7 +50,8 @@ randomNums = (num) => {
     return random;
 }
 
-renderAbout = () => {
+function renderAbout() {
+  console.log("about button clicked");
   clearPage();
   rowDiv.innerHTML = `
   <br> <br>

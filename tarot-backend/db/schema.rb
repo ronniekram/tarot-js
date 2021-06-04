@@ -14,12 +14,11 @@ ActiveRecord::Schema.define(version: 2020_07_11_053516) do
 
   create_table "cards", force: :cascade do |t|
     t.string "name"
-    t.string "suit"
     t.text "summary"
-    t.string "image"
+    t.text "full_meaning"
     t.string "upright"
     t.string "reversed"
-    t.text "desc"
+    t.string "image"
     t.integer "draw_id"
   end
 
