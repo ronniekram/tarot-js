@@ -1,4 +1,5 @@
 class DrawsController < ApplicationController
+  # before_action :set_draw, only: [:show, :destroy]
 
   def index 
     draws = Draw.all

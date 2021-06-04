@@ -16,12 +16,11 @@ class CardsController < ApplicationController
   def card_params
     params.require(:card).permit(
       :name, 
-      :suit,
-      :summary,
-      :image,
+      :summary, 
+      :full_meaning,
       :upright, 
       :reversed, 
-      :desc,
+      :image,
       :draw_id
     )
   end 
